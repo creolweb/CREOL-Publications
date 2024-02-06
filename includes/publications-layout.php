@@ -33,7 +33,7 @@ function publications_form_display() {
 							<option value=-1>All</option>
 							<?php for ( $i = 0; $i < count( $instructor_arr ); $i++ ) : ?>
 								<option value="<?= $type_arr[ $i ]->{PublicationType} ?>">
-									<?= $type_arr[ $i ]->PublicationType ?>
+									<?= pub_type($type_arr[ $i ]->PublicationType) ?>
 								</option>
 							<?php endfor; ?>
 						</select>
@@ -50,31 +50,34 @@ function publications_form_display() {
 						</select>
 					</div>
 					<div class="form-group">
-                        <input type="search" name="search" id="search">
+						<div class="col-lg-6">
+							<div class="input-group">
+							<input type="search" class="form-control" placeholder="Search" aria-label="Search">
+							<span class="input-group-btn">
+								<button class="btn btn-primary" type="button"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></button>
+							</span>
+							</div>
+						</div>
 					</div>
 					<br>
 				</form>
 			</div>
-			<!-- Course output from form selection -->
+
 			<div class="col mt-lg-0 mt-5">
 				<?php
-				if ( isset( $_GET['semester'] ) && isset( $_GET['instructor'] ) && isset( $_GET['course'] ) && isset( $_GET['level'] ) ) {
-					if ( $_GET['semester'] == ALL_SEMESTERS && $_GET['instructor'] == ALL_INSTRUCTORS && $_GET['course'] == ALL_COURSES ) {
-						echo 'Choose a semester, instructor, or course';
-					} else {
-						courses_display( $_GET['year'], $_GET['type'], $_GET['author'] );
-						?>
-						<!-- Setting the drop downs to match the selection -->
-						<script>
-							const urlParams = new URLSearchParams(window.location.search);
-							document.getElementById("year").value = urlParams.get("year");
-							document.getElementById("type").value = urlParams.get("type");
-							document.getElementById("author").value = urlParams.get("author");
-						</script>
-						<?php
-					}
+				if ( isset( $_GET['year'] ) && isset( $_GET['type'] ) && isset( $_GET['author'] ) && isset( $_GET['search'] ) ) {
+					publications_display( $_GET['year'], $_GET['type'], $_GET['author'] );
+					?>
+					<!-- Setting the drop downs to match the selection -->
+					<script>
+						const urlParams = new URLSearchParams(window.location.search);
+						document.getElementById("year").value = urlParams.get("year");
+						document.getElementById("type").value = urlParams.get("type");
+						document.getElementById("author").value = urlParams.get("author");
+					</script>
+					<?php
 				} else {
-					courses_display( semester_serial(), ALL_INSTRUCTORS, ALL_COURSES, UNDERGRAD_GRAD );
+					publications_display(ALL_YEARS, ALL_TYPES, ALL__AUTHORS);
 					?>
 					<script>
 						document.getElementById("semester").value = <?= semester_serial() ?>;
