@@ -19,4 +19,4 @@ require_once 'includes/publications-functions.php';
 require_once 'includes/publications-layout.php';
 require_once 'includes/publications-list.php';
 
-add_shortcode( 'publications', 'publications_list');
+add_shortcode( 'publications', 'publications_form_display');
