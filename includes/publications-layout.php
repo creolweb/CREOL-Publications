@@ -4,7 +4,7 @@
  **/
 
  // Handles the dropdown on the left.
-function courses_form_display() {
+function publications_form_display() {
 	$year_arr = get_json( 'https://api.creol.ucf.edu/PublicationsJson.asmx/YearList' );
 	$type_arr = get_json( 'https://api.creol.ucf.edu/PublicationsJson.asmx/TypeList' );
 	$author_arr = get_json( 'https://api.creol.ucf.edu/PublicationsJson.asmx/AuthorList' );
@@ -89,7 +89,7 @@ function courses_form_display() {
 	return ob_get_clean();
 }
 
-function courses_display( $year, $type, $author ) {
+function publications_display( $year, $type, $author ) {
 	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?Year=' . $year . '&Type=' . $type . '&Author=' . $author;
 	$publication_info_arr = get_json( $url );
 
