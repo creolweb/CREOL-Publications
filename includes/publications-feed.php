@@ -1,1 +1,20 @@
 <?php
+
+function get_json_nocache( $url ) {
+
+	$expiration = 3600; // Seconds in an hour.
+	$args = array(
+		'timeout' => 60,
+	);
+
+    $request = wp_remote_get( $url, $args );
+
+    $items = json_decode( wp_remote_retrieve_body( $request ) );
+
+
+	// $items = json_decode( wp_remote_retrieve_body( $request ) );
+
+	$items = array( $items->response )[0];
+
+	return $items;
+}
