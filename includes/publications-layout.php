@@ -66,16 +66,21 @@ function publications_form_display() {
 			<div class="col mt-lg-0 mt-5">
 				<?php
 				if ( isset( $_GET['year'] ) && isset( $_GET['type'] ) && isset( $_GET['author'] ) ) {
-					publications_display( $_GET['year'], $_GET['type'], $_GET['author'] );
-					?>
-					<!-- Setting the drop downs to match the selection -->
-					<script>
-						const urlParams = new URLSearchParams(window.location.search);
-						document.getElementById("year").value = urlParams.get("year");
-						document.getElementById("type").value = urlParams.get("type");
-						document.getElementById("author").value = urlParams.get("author");
-					</script>
-					<?php
+					if ( $_GET['year'] == ALL_YEARS && $_GET['type'] == ALL_TYPES && $_GET['author'] == ALL_AUTHORS ) {
+						publications_display('https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationList');
+					} else {
+						publications_display('https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?Year=' . $_GET['year'] . '&Type=' . $_GET['type'] . '&Author=' . $_GET['author']);
+						?>
+						<!-- Setting the drop downs to match the selection -->
+						<script>
+							const urlParams = new URLSearchParams(window.location.search);
+							document.getElementById("semester").value = urlParams.get("semester");
+							document.getElementById("instructor").value = urlParams.get("instructor");
+							document.getElementById("course").value = urlParams.get("course");
+							document.getElementById("level").value = urlParams.get("level");
+						</script>
+						<?php
+					}
 				} else {
 					publications_display(ALL_YEARS, ALL_TYPES, ALL__AUTHORS);
 					?>
@@ -93,9 +98,7 @@ function publications_form_display() {
 	return ob_get_clean();
 }
 
-function publications_display( $year, $type, $author ) {
-	// $url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?Year=' . $year . '&Type=' . $type . '&Author=' . $author;
-	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationList';
+function publications_display( $url ) {
 	$publication_info_arr = get_json( $url );
 
 	foreach ( $publication_info_arr as $curr ) {
