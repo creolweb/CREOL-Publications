@@ -17,6 +17,5 @@ if ( ! defined( 'WPINC' ) ) {
 require_once 'includes/publications-feed.php';
 require_once 'includes/publications-functions.php';
 require_once 'includes/publications-layout.php';
-require_once 'includes/publications-list.php';
 
 add_shortcode( 'publications', 'publications_form_display');
