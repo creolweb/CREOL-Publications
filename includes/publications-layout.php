@@ -64,22 +64,10 @@ function publications_form_display() {
 
 			<div class="col mt-lg-0 mt-5">
 				<?php
-				
 				if ( isset( $_GET['year'] ) && isset( $_GET['type'] ) && isset( $_GET['author'] ) ) {
-					// if ( $_GET['year'] == ALL_YEARS && $_GET['type'] == ALL_TYPES && $_GET['author'] == ALL_AUTHORS ) {
-					publications_display('https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationList');
-					// } else {
-					// 	publications_display('https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?Year=' . $_GET['year'] . '&Type=' . $_GET['type'] . '&Author=' . $_GET['author']);
-					// 	?>
-					// 	<!-- Setting the drop downs to match the selection -->
-					// 	<script>
-
-					// 	</script>
-					// 	<?php
-					// }
+					publications_display('https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?Year=' . $_GET['year'] . '&Type=' . $_GET['type'] . '&Author=' . $_GET['author']);
 				} else {
-					?>
-					<?php
+					publications_display('https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationList');
 				}
 				?>
 			</div>
