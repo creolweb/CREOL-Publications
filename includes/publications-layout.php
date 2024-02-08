@@ -31,7 +31,7 @@ function publications_form_display() {
 					<div class="form-group">
 						<label for="type">Type</label>
 						<select name="type" id="type" class="form-control" onchange="this.form.submit()">
-							<option value=-1>All</option>
+							<option value=0>All</option>
 							<?php for ( $i = 0; $i < count( $type_arr ); $i++ ) : ?>
 								<option value="<?= $type_arr[ $i ]->{PublicationType} ?>">
 									<?= pub_type($type_arr[ $i ]->PublicationType) ?>
@@ -65,9 +65,9 @@ function publications_form_display() {
 			<div class="col mt-lg-0 mt-5">
 				<?php
 				if ( isset( $_GET['year'] ) && isset( $_GET['type'] ) && isset( $_GET['author'] ) ) {
-					publications_display('https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?Year=' . $_GET['year'] . '&Type=' . $_GET['type'] . '&Author=' . $_GET['author']);
+					publications_display($_GET['year'], $_GET['type'], $_GET['author']);
 				} else {
-					publications_display('https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationList');
+					publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS);
 				}
 				?>
 			</div>
@@ -77,7 +77,8 @@ function publications_form_display() {
 	return ob_get_clean();
 }
 
-function publications_display( $url ) {
+function publications_display( $year, $type, $author ) {
+	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?Year=' . $_GET['year'] . '&Type=' . $_GET['type'] . '&Author=' . $_GET['author'];
 	$publication_info_arr = get_json( $url );
 
 	foreach ( $publication_info_arr as $curr ) {
