@@ -80,7 +80,7 @@ function publications_form_display() {
 					publications_display(ALL_YEARS, ALL_TYPES, ALL__AUTHORS);
 					?>
 					<script>
-						document.getElementById("semester").value = <?= semester_serial() ?>;
+						//document.getElementById("semester").value = <?= semester_serial() ?>;
 					</script>
 					<?php
 				}
