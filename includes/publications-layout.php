@@ -94,7 +94,8 @@ function publications_form_display() {
 }
 
 function publications_display( $year, $type, $author ) {
-	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?Year=' . $year . '&Type=' . $type . '&Author=' . $author;
+	// $url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?Year=' . $year . '&Type=' . $type . '&Author=' . $author;
+	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationList';
 	$publication_info_arr = get_json( $url );
 
 	foreach ( $publication_info_arr as $curr ) {
