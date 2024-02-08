@@ -6,7 +6,6 @@
  // Handles the dropdown on the left.
 function publications_form_display() {
 	$year_arr = get_json( 'https://api.creol.ucf.edu/PublicationsJson.asmx/YearList' );
-	
 	$type_arr = get_json( 'https://api.creol.ucf.edu/PublicationsJson.asmx/TypeList' );
 	$author_arr = get_json( 'https://api.creol.ucf.edu/PublicationsJson.asmx/AuthorList' );
 
@@ -65,10 +64,10 @@ function publications_form_display() {
 
 			<div class="col mt-lg-0 mt-5">
 				<?php
-				publications_display('https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationList');
+				
 				if ( isset( $_GET['year'] ) && isset( $_GET['type'] ) && isset( $_GET['author'] ) ) {
 					// if ( $_GET['year'] == ALL_YEARS && $_GET['type'] == ALL_TYPES && $_GET['author'] == ALL_AUTHORS ) {
-						
+					publications_display('https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationList');
 					// } else {
 					// 	publications_display('https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?Year=' . $_GET['year'] . '&Type=' . $_GET['type'] . '&Author=' . $_GET['author']);
 					// 	?>

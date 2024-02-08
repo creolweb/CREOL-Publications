@@ -12,7 +12,9 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-
+define( 'ALL_YEARS', 0 );
+define( 'ALL_TYPES', -1 );
+define( 'ALL_AUTHORS', 0 );
 
 require_once 'includes/publications-feed.php';
 require_once 'includes/publications-functions.php';
