@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: Publications
-Description: {{Short project description here}}
-Version: 0.0.0
+Description: Gets and displays CREOL Publications.
+Version: 0.0.1
 Author: UCF Web Communications
 License: GPL3
 GitHub Plugin URI: https://github.com/UCF/CREOL-Publications
