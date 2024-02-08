@@ -33,7 +33,7 @@ function publications_form_display() {
 						<select name="type" id="type" class="form-control" onchange="this.form.submit()">
 							<option value=0>All</option>
 							<?php for ( $i = 0; $i < count( $type_arr ); $i++ ) : ?>
-								<option value="<?= $type_arr[ $i ]->{PublicationType} ?>">
+								<option value="<?= $type_arr[ $i ]->PublicationType ?>">
 									<?= pub_type($type_arr[ $i ]->PublicationType) ?>
 								</option>
 							<?php endfor; ?>
