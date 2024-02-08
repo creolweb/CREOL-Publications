@@ -5,9 +5,9 @@
 
  // Handles the dropdown on the left.
 function publications_form_display() {
-	$year_arr = get_json( 'https://api.creol.ucf.edu/PublicationsJson.asmx/YearList' );
-	$type_arr = get_json( 'https://api.creol.ucf.edu/PublicationsJson.asmx/TypeList' );
-	$author_arr = get_json( 'https://api.creol.ucf.edu/PublicationsJson.asmx/AuthorList' );
+	$year_arr = get_publications_json( 'https://api.creol.ucf.edu/PublicationsJson.asmx/YearList' );
+	$type_arr = get_publications_json( 'https://api.creol.ucf.edu/PublicationsJson.asmx/TypeList' );
+	$author_arr = get_publications_json( 'https://api.creol.ucf.edu/PublicationsJson.asmx/AuthorList' );
 
 	ob_start();
 	?>
@@ -94,7 +94,7 @@ function publications_form_display() {
 
 function publications_display( $year, $type, $author ) {
 	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?Year=' . $year . '&Type=' . $type . '&Author=' . $author;
-	$publication_info_arr = get_json( $url );
+	$publication_info_arr = get_publications_json( $url );
 
 	foreach ( $publication_info_arr as $curr ) {
 		?>

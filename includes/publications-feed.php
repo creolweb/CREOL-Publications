@@ -3,7 +3,7 @@
  * Handles JSON feed.
  * Takes in a URL and returns an object.
  **/
-function get_json( $url ) {
+function get_publications_json( $url ) {
 	$transient = 'publications_' . md5( $url );
 	$items = get_transient( $transient );
 	$expiration = 3600; // Seconds in an hour.
