@@ -73,16 +73,11 @@ function publications_form_display() {
 						?>
 						<!-- Setting the drop downs to match the selection -->
 						<script>
-							const urlParams = new URLSearchParams(window.location.search);
-							document.getElementById("semester").value = urlParams.get("semester");
-							document.getElementById("instructor").value = urlParams.get("instructor");
-							document.getElementById("course").value = urlParams.get("course");
-							document.getElementById("level").value = urlParams.get("level");
+
 						</script>
 						<?php
 					}
 				} else {
-					publications_display(ALL_YEARS, ALL_TYPES, ALL__AUTHORS);
 					?>
 					<script>
 						console.log(<?php echo json_encode($publication_info_arr); ?>);
