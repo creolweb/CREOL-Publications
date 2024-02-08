@@ -102,7 +102,7 @@ function publications_display( $year, $type, $author ) {
 		?>
 		<div class="px-2 pb-3">
 			<span class="h-5 font-weight-bold letter-spacing-1">
-				<?= $curr->Publication . ' ' . $curr->Author ?>
+				<?= $curr->Column1 ?>
 			</span><br>
 		</div>
 		<?php
