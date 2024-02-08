@@ -65,7 +65,11 @@ function publications_form_display() {
 			<div class="col mt-lg-0 mt-5">
 				<?php
 				if ( isset( $_GET['year'] ) && isset( $_GET['type'] ) && isset( $_GET['author'] ) ) {
-					publications_display($_GET['year'], $_GET['type'], $_GET['author']);
+					if ( $_GET['year'] == ALL_YEARS && $_GET['type'] == ALL_TYPES && $_GET['author'] == ALL_AUTHORS ) {
+						publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS);
+					} else {
+						publications_display($_GET['year'], $_GET['type'], $_GET['author']);
+					}
 				} else {
 					publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS);
 				}
@@ -85,7 +89,7 @@ function publications_display( $year, $type, $author ) {
 		?>
 		<div class="px-2 pb-3">
 			<span class="h-5 font-weight-bold letter-spacing-1">
-				<?= $curr->Column1 ?>
+				<?= $curr->Authors . ' ' . $curr->Title ?>
 			</span><br>
 		</div>
 		<?php
