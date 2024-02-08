@@ -6,11 +6,16 @@
  // Handles the dropdown on the left.
 function publications_form_display() {
 	$year_arr = get_publications_json( 'https://api.creol.ucf.edu/PublicationsJson.asmx/YearList' );
+	
 	$type_arr = get_publications_json( 'https://api.creol.ucf.edu/PublicationsJson.asmx/TypeList' );
 	$author_arr = get_publications_json( 'https://api.creol.ucf.edu/PublicationsJson.asmx/AuthorList' );
 
 	ob_start();
 	?>
+	<script>
+		console.log(<?php echo json_encode($year_arr); ?>);
+	</script>
+
 	<div class="container">
 		<div class="row">
 			<!-- Form -->
