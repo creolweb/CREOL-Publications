@@ -52,13 +52,11 @@ function publications_form_display() {
 						</select>
 					</div>
 					<div class="form-group">
-						<div class="col-lg-6">
 							<div class="input-group">
 							<input type="search" class="form-control" placeholder="Search" aria-label="Search">
 							<span class="input-group-btn">
 								<button class="btn btn-primary" type="button"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></button>
 							</span>
-							</div>
 						</div>
 					</div>
 					<br>
@@ -67,7 +65,7 @@ function publications_form_display() {
 
 			<div class="col mt-lg-0 mt-5">
 				<?php
-				if ( isset( $_GET['year'] ) && isset( $_GET['type'] ) && isset( $_GET['author'] ) && isset( $_GET['search'] ) ) {
+				if ( isset( $_GET['year'] ) && isset( $_GET['type'] ) && isset( $_GET['author'] ) ) {
 					publications_display( $_GET['year'], $_GET['type'], $_GET['author'] );
 					?>
 					<!-- Setting the drop downs to match the selection -->
@@ -82,6 +80,7 @@ function publications_form_display() {
 					publications_display(ALL_YEARS, ALL_TYPES, ALL__AUTHORS);
 					?>
 					<script>
+						console.log(<?php echo json_encode($publication_info_arr); ?>);
 						//document.getElementById("semester").value = <?= semester_serial() ?>;
 					</script>
 					<?php
