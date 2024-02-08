@@ -12,9 +12,6 @@ function publications_form_display() {
 
 	ob_start();
 	?>
-	<script>
-		console.log(<?php echo json_encode($year_arr); ?>);
-	</script>
 
 	<div class="container">
 		<div class="row">
@@ -36,7 +33,7 @@ function publications_form_display() {
 						<label for="type">Type</label>
 						<select name="type" id="type" class="form-control" onchange="this.form.submit()">
 							<option value=-1>All</option>
-							<?php for ( $i = 0; $i < count( $instructor_arr ); $i++ ) : ?>
+							<?php for ( $i = 0; $i < count( $type_arr ); $i++ ) : ?>
 								<option value="<?= $type_arr[ $i ]->{PublicationType} ?>">
 									<?= pub_type($type_arr[ $i ]->PublicationType) ?>
 								</option>
