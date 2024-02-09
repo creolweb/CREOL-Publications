@@ -2,7 +2,9 @@
 /**
  * Handles the form and the output.
  **/
-// Handles the dropdown on the left.
+
+include 'ChromePhp.php';
+ // Handles the dropdown on the left.
 function publications_form_display() {
 	$year_arr = get_json_nocache( 'https://api.creol.ucf.edu/PublicationsJson.asmx/YearList' );
 	$type_arr = get_json_nocache( 'https://api.creol.ucf.edu/PublicationsJson.asmx/TypeList' );
@@ -83,6 +85,7 @@ function publications_form_display() {
 function publications_display( $year, $type, $author ) {
 	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?Year=' . $_GET['year'] . '&Type=' . $_GET['type'] . '&Author=' . $_GET['author'];
 	$publication_info_arr = get_json_nocache( $url );
+	ChromePhp::log($publication_info_arr);
 	
 	foreach ( $publication_info_arr as $curr ) {
 		?>
@@ -94,3 +97,6 @@ function publications_display( $year, $type, $author ) {
 		<?php
 	}
 }
+$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?Year=2023&Type=0&Author=0';
+$publication_info_arr = get_json_nocache( $url );
+ChromePhp::log($publication_info_arr);
