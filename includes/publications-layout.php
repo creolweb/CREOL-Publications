@@ -82,15 +82,14 @@ function publications_form_display() {
 }
 
 function publications_display( $year, $type, $author ) {
-	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?Yr=' . $_GET['year'] . '&Type=' . $_GET['type'] . '&Author=' . $_GET['author'];
-	error_log('test');
+	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $_GET['year'] . '&Type=' . $_GET['type'] . '&Author=' . $_GET['author'];
 	$publication_info_arr = get_json_nocache( $url );
 	error_log(json_encode($publication_info_arr));
 	?>
 	
 	<script>
     	console.log(<?= json_encode($url); ?>);
-    	console.log(<?= json_encode(get_json_nocache('https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=2022&type=0&author=0')); ?>);
+    	console.log(<?= json_encode(get_json_nocache('$url')); ?>);
 	</script>
 	<?php
 	foreach ( $publication_info_arr as $curr ) {
