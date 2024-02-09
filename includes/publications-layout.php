@@ -18,8 +18,8 @@ function publications_form_display() {
 			<div class="col-lg-3 col-12">
 				<form method="get" name="form">
 					<div class="form-group">
-						<label for="year">Year</label>
-						<select name="year" id="year" class="form-control" onchange="this.form.submit()">
+						<label for="yr">Year</label>
+						<select name="yr" id="yr" class="form-control" onchange="this.form.submit()">
 							<option value=0>All</option>
 							<?php for ( $i = 0; $i < count( $year_arr ); $i++ ) : ?>
 								<option value="<?= $year_arr[ $i ]->PublicationTxt ?>">
