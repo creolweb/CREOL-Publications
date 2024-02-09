@@ -83,7 +83,7 @@ function publications_form_display() {
 	<?php
 	return ob_get_clean();
 }
-ChromePhp::log('test?');
+
 function publications_display( $year, $type, $author ) {
 	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?Year=' . $_GET['year'] . '&Type=' . $_GET['type'] . '&Author=' . $_GET['author'];
 	$publication_info_arr = get_json_nocache( $url );
@@ -99,3 +99,4 @@ function publications_display( $year, $type, $author ) {
 		<?php
 	}
 }
+ChromePhp::log($publication_info_arr);
