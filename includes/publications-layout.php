@@ -95,13 +95,16 @@ function publications_display( $year, $type, $author ) {
 	foreach ( $publication_info_arr as $curr ) {
 		?>
 		<div class="px-2 pb-3 container">
+			<div>
+				<?= pub_type($curr->PublicationType) ?>
+			</div>
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-1">
 					<span class="h-5 font-weight-bold letter-spacing-1">
 						<?= $curr->PublicationYear ?>
 					</span>
 				</div>
-				<div class="col-md-8">
+				<div class="col-mb-2">
 					<?= $curr->Authors ?>.
 					<span class="fst-italic">
 					"<?= $curr->Title ?>".
