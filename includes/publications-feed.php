@@ -14,7 +14,7 @@ function get_json_nocache( $url ) {
 	if ( is_wp_error( $request ) ) {
 		echo 'Please email UCFTeam-CREOL-IT@groups.ucf.edu with the url, error message, and screenshot.\n';
 		echo $request->get_error_message() . '\n';
-		return false;
+		return [];
 	}
 
 	// $items = json_decode( wp_remote_retrieve_body( $request ) );
