@@ -87,7 +87,7 @@ function publications_display( $year, $type, $author ) {
 	?>
 	<script>
     	console.log(<?= json_encode($url); ?>);
-    	console.log(<?= json_encode(get_json_nocache('https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?year=2023&type=0&author=0')); ?>);
+    	console.log(<?= json_encode(get_json_nocache('https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?year=2022&type=0&author=0')); ?>);
 	</script>
 	<?php
 	foreach ( $publication_info_arr as $curr ) {
