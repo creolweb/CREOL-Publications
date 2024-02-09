@@ -96,12 +96,12 @@ function publications_display( $year, $type, $author ) {
 		?>
 		<div class="px-2 pb-3 container">
 			<div class="row">
-				<div>
+				<div class="col-md-4">
 					<span class="h-5 font-weight-bold letter-spacing-1">
 						<?= $curr->PublicationYear ?>
 					</span>
 				</div>
-				<div>
+				<div class="col-md-8">
 					<?= $curr->Authors ?>.
 					<span class="fst-italic">
 					"<?= $curr->Title ?>".
