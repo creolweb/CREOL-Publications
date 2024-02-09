@@ -96,7 +96,7 @@ function publications_display( $year, $type, $author ) {
 	foreach ( $publication_info_arr as $curr ) {
 		?>
 		<div class="px-2 pb-3 container">
-			<?php if ( $curr->PublicationType != currentType ) {
+			<?php if ( $curr->PublicationType != $currentType ) {
 				?>
 				console.log(<?= json_encode($curr->PublicationType); ?>);
 				console.log(<?= json_encode($currentType); ?>);
