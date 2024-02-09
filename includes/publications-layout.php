@@ -6,7 +6,6 @@
 include 'ChromePhp.php';
 ChromePhp::log('Hello console!');
 ChromePhp::log($_SERVER);
-ChromePhp::warn('something went wrong!');
  // Handles the dropdown on the left.
 function publications_form_display() {
 	$year_arr = get_json_nocache( 'https://api.creol.ucf.edu/PublicationsJson.asmx/YearList' );
@@ -88,7 +87,7 @@ function publications_form_display() {
 function publications_display( $year, $type, $author ) {
 	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?Year=' . $_GET['year'] . '&Type=' . $_GET['type'] . '&Author=' . $_GET['author'];
 	$publication_info_arr = get_json_nocache( $url );
-
+	ChromePhp::log($publication_info_arr);
 	foreach ( $publication_info_arr as $curr ) {
 		?>
 		<div class="px-2 pb-3">
