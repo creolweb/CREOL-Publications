@@ -92,12 +92,18 @@ function publications_display( $year, $type, $author ) {
     	console.log(<?= json_encode(get_json_nocache('$url')); ?>);
 	</script>
 	<?php
+	$currentType = -1;
 	foreach ( $publication_info_arr as $curr ) {
 		?>
 		<div class="px-2 pb-3 container">
-			<div>
-				<?= pub_type($curr->PublicationType) ?>
-			</div>
+			<? if ( $curr->PublicationType != currentType ) {
+				?>
+				<div class="font-weight-bold">
+					pub_type($curr->PublicationType) 
+				</div>
+				<?
+				$currentType = $curr->PublicationType;
+			}?>
 			<div class="row">
 				<div class="col-1">
 					<span class="h-5 font-weight-bold letter-spacing-1">
