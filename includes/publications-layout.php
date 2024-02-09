@@ -3,6 +3,10 @@
  * Handles the form and the output.
  **/
 
+include 'ChromePhp.php';
+ChromePhp::log('Hello console!');
+ChromePhp::log($_SERVER);
+ChromePhp::warn('something went wrong!');
  // Handles the dropdown on the left.
 function publications_form_display() {
 	$year_arr = get_json_nocache( 'https://api.creol.ucf.edu/PublicationsJson.asmx/YearList' );
