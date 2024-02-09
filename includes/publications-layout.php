@@ -96,12 +96,12 @@ function publications_display( $year, $type, $author ) {
 	foreach ( $publication_info_arr as $curr ) {
 		?>
 		<div class="px-2 pb-3 container">
-			<? if ( $curr->PublicationType != currentType ) {
+			<?php if ( $curr->PublicationType != currentType ) {
 				?>
 				<div class="font-weight-bold">
-					pub_type($curr->PublicationType) 
+					<?= pub_type($curr->PublicationType) ?>
 				</div>
-				<?
+				<?php
 				$currentType = $curr->PublicationType;
 			}?>
 			<div class="row">
