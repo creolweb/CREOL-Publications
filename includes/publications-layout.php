@@ -98,8 +98,6 @@ function publications_display( $year, $type, $author ) {
 		<div class="px-2 pb-3 container">
 			<?php if ( $curr->PublicationType != $currentType ) {
 				?>
-				console.log(<?= json_encode($curr->PublicationType); ?>);
-				console.log(<?= json_encode($currentType); ?>);
 				<div class="font-weight-bold">
 					<?= pub_type($curr->PublicationType) ?>
 				</div>
