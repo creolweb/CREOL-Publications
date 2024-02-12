@@ -17,7 +17,7 @@ function publications_form_display() {
 			<!-- Form -->
 			<div class="col-lg-3 col-12">
 				<form method="get" name="form">
-					<div class="form-group">
+					<span class="form-group">
 						<label for="yr">Year</label>
 						<select name="yr" id="yr" class="form-control" onchange="this.form.submit()">
 							<option value=0>All</option>
@@ -27,7 +27,7 @@ function publications_form_display() {
 								</option>
 							<?php endfor; ?>
 						</select>
-					</div>
+					</span>
 					<div class="form-group">
 						<label for="type">Type</label>
 						<select name="type" id="type" class="form-control" onchange="this.form.submit()">
