@@ -16,7 +16,7 @@ function publications_form_display() {
 		<div class="row">
 			<!-- Form -->
 				<form method="get" name="form" class="form-inline">
-					<div class="col-xs-12 col-sm-6 col-md-3 form-group">
+					<div class="col-md-3 form-group">
 						<label for="yr">Year</label>
 						<select name="yr" id="yr" class="form-control" onchange="this.form.submit()">
 							<option value=0>All</option>
@@ -27,7 +27,7 @@ function publications_form_display() {
 							<?php endfor; ?>
 						</select>
 					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3 form-group">
+					<div class="col-md-3 form-group">
 						<label for="type">Type</label>
 						<select name="type" id="type" class="form-control" onchange="this.form.submit()">
 							<option value=0>All</option>
@@ -38,7 +38,7 @@ function publications_form_display() {
 							<?php endfor; ?>
 						</select>
 					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3 form-group">
+					<div class="col-md-3 form-group">
 						<label for="author">Author</label>
 						<select name="author" id="author" class="form-control" onchange="this.form.submit()">
 							<option value=0>All</option>
@@ -49,7 +49,7 @@ function publications_form_display() {
 							<?php endfor; ?>
 						</select>
 					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3 form-group">
+					<div class="col-md-3 form-group">
 							<div class="input-group">
 							<input type="search" class="form-control" placeholder="Search" aria-label="Search">
 							<span class="input-group-btn">
