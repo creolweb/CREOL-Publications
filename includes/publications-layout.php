@@ -50,7 +50,7 @@ function publications_form_display() {
 							<?php endfor; ?>
 						</select>
 					</div>
-					<div class="form-group">
+					<div class="col-md-3 form-group">
 							<div class="input-group">
 							<input type="search" class="form-control" placeholder="Search" aria-label="Search">
 							<span class="input-group-btn">
