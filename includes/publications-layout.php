@@ -28,7 +28,7 @@ function publications_form_display() {
 							<?php endfor; ?>
 						</select>
 					</span>
-					<div class="form-group">
+					<span class="form-group">
 						<label for="type">Type</label>
 						<select name="type" id="type" class="form-control" onchange="this.form.submit()">
 							<option value=0>All</option>
@@ -38,7 +38,7 @@ function publications_form_display() {
 								</option>
 							<?php endfor; ?>
 						</select>
-					</div>
+					</span>
 					<div class="form-group">
 						<label for="author">Author</label>
 						<select name="author" id="author" class="form-control" onchange="this.form.submit()">
