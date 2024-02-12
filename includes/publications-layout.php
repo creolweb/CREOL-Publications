@@ -16,8 +16,8 @@ function publications_form_display() {
 		<div class="row">
 			<!-- Form -->
 				<form method="get" name="form" class="form-inline">
-					<div class="" style="width:30%;">
-						<select name="yr" id="yr" class="form-control" onchange="this.form.submit()">
+					<div class="col-xs-12 col-sm-6 col-md-3 form-group">
+						<select name="yr" id="yr" class="form-control" onchange="this.form.submit()" style="width: 100%;">
 							<option value=0>Year</option>
 							<?php for ( $i = 0; $i < count( $year_arr ); $i++ ) : ?>
 								<option value="<?= $year_arr[ $i ]->PublicationTxt ?>">
@@ -26,8 +26,8 @@ function publications_form_display() {
 							<?php endfor; ?>
 						</select>
 					</div>
-					<div class="">
-						<select name="type" id="type" class="form-control" onchange="this.form.submit()">
+					<div class="col-xs-12 col-sm-6 col-md-3 form-group">
+						<select name="type" id="type" class="form-control" onchange="this.form.submit()" style="width: 100%;">
 							<option value=0>Type</option>
 							<?php for ( $i = 0; $i < count( $type_arr ); $i++ ) : ?>
 								<option value="<?= $type_arr[ $i ]->PublicationType ?>">
@@ -36,8 +36,8 @@ function publications_form_display() {
 							<?php endfor; ?>
 						</select>
 					</div>
-					<div class="">
-						<select name="author" id="author" class="form-control" onchange="this.form.submit()">
+					<div class="col-xs-12 col-sm-6 col-md-3 form-group">
+						<select name="author" id="author" class="form-control" onchange="this.form.submit()" style="width: 100%;">
 							<option value=0>Author</option>
 							<?php for ( $i = 0; $i < count( $author_arr ); $i++ ) : ?>
 								<option value="<?= $author_arr[ $i ]->PeopleID ?>">
