@@ -112,7 +112,7 @@ function publications_display( $year, $type, $author ) {
 					</span>
 					<?php if ( $curr->PDFLink != null) {
 						?>
-						<script>console.log((<?php json_encode($curr->PDFLink) ?>);)</script>
+						<script>console.log(<?php json_encode($curr->PDFLink) ?>;)</script>
 						<i class="fa-solid fa-file-pdf" aria-hidden="true" href="<?php $curr->PDFLink?>"></i>
 					<?php 
 					}
