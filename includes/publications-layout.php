@@ -110,6 +110,12 @@ function publications_display( $year, $type, $author ) {
 					<span class="fst-italic">
 					"<?= $curr->Title ?>".
 					</span>
+					<?php if ( $curr->PDFLink != null) {
+						?>
+						<i class="fa-solid fa-file-pdf" aria-hidden="true" href="<?php $curr->PDFLink?>"></i>
+					<?php 
+					}
+					?>
 				</div>
 			</div>
 		</div>
