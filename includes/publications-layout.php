@@ -110,13 +110,10 @@ function publications_display( $year, $type, $author ) {
 					<span class="fst-italic">
 					"<?= $curr->Title ?>".
 					<?= $curr->PDFLink ?>
-					<a title="PDF version" class="pr-1 text-decoration-none" href="" target="_blank">
+					<a>
 						<i class="fa-solid fa-file-pdf" aria-hidden="true"></i>
 					</a>
 					</span>
-						<script>console.log(<?php json_encode($curr->PublicationID); ?>);</script>
-						<script>console.log(<?php json_encode($curr->PDFLink); ?>);</script>
-						<!-- <i class="fa-solid fa-file-pdf" aria-hidden="true" href="<?php $curr->PDFLink?>"></i> -->
 				</div>
 			</div>
 		</div>
