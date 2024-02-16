@@ -109,6 +109,8 @@ function publications_display( $year, $type, $author ) {
 					<?= $curr->Authors ?>.
 					<span class="fst-italic">
 					"<?= $curr->Title ?>".
+					<?= $curr->PDFLink ?>
+
 					</span>
 						<script>console.log(<?php json_encode($curr->PublicationID); ?>);</script>
 						<script>console.log(<?php json_encode($curr->PDFLink); ?>);</script>
