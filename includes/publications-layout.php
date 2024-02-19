@@ -77,6 +77,9 @@ function publications_form_display() {
 }
 
 function publications_display($year, $type, $author, $page, $pageSize = 20) {
+	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $_GET['yr'] . '&Type=' . $_GET['type'] . '&Author=' . $_GET['author'];
+	$publication_info_arr = get_json_nocache( $url );
+	error_log(json_encode($publication_info_arr));
 	?>
 	<script>
 		var publications = <?= json_encode($publication_info_arr); ?>;
@@ -84,9 +87,7 @@ function publications_display($year, $type, $author, $page, $pageSize = 20) {
 	</script>
 	<?php
 	
-	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $_GET['yr'] . '&Type=' . $_GET['type'] . '&Author=' . $_GET['author'];
-	$publication_info_arr = get_json_nocache( $url );
-	error_log(json_encode($publication_info_arr));
+	
 
 	// $totalPages = count($publication_info_arr);
 	?>
