@@ -94,6 +94,8 @@ function publications_display( $year, $type, $author, $pg ) {
 		<a href="?yr=<?= $year ?>&type=<?= $type ?>&author=<?= $author ?>&pg=<?= $pg - 1 ?>">Previous</a>
 	<?php endif; ?>
 
+	<a href="?yr=<?= $year ?>&type=<?= $type ?>&author=<?= $author ?>&page=<?= $page + 1 ?>">Next</a>
+
 	<script>
 		var publications = <?= json_encode($publication_info_arr); ?>;
 		var count = publications.length;
