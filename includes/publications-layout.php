@@ -94,7 +94,7 @@ function publications_display( $year, $type, $author ) {
 			<script>
 				var publications = <?= json_encode($publication_info_arr); ?>;
 				var count = publications.length;
-				document.getElementById('publicationCount').textContent = " " + count + " ";
+				document.getElementById('publicationCount').textContent = ' ' + count + ' ';
 			</script>
 			<br>
 	<?php
