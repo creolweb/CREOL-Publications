@@ -76,20 +76,20 @@ function publications_form_display() {
 	return ob_get_clean();
 }
 
-function publications_display( $year, $type, $author, $page ) {
+function publications_display( $year, $type, $author ) {
 	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $_GET['yr'] . '&Type=' . $_GET['type'] . '&Author=' . $_GET['author'];
 	$publication_info_arr = get_json_nocache( $url );
 	error_log(json_encode($publication_info_arr));
-	$page = 2;
-	$resultLength = count($publication_info_arr);
-	$totalPages = 2;
 
+	$resultLength = count($publication_info_arr);
+	$totalPages = ceil($totalItems / 20);
 	?>
 
 	<div class="row float-right">
 		Found <?= $resultLength ?> publications.
 	</div>
 	<br>
+	
 
 	<script>
 		var publications = <?= json_encode($publication_info_arr); ?>;
