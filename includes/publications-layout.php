@@ -81,7 +81,8 @@ function publications_display( $year, $type, $author ) {
 	$publication_info_arr = get_json_nocache( $url );
 	error_log(json_encode($publication_info_arr));
 
-	$totalPages = count($publication_info_arr);
+	$resultLength = count($publication_info_arr);
+	$totalPages = ceil($totalItems / $pageSize);
 	?>
 
 	<div class="row float-right">
