@@ -81,7 +81,7 @@ function publications_display( $year, $type, $author, $page ) {
         $page = 1;
     }
 
-	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $_GET['yr'] . '&Type=' . $_GET['type'] . '&Author=' . $_GET['author'] . $_GET['page'];
+	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $_GET['yr'] . '&Type=' . $_GET['type'] . '&Author=' . $_GET['author'];
 	$publication_info_arr = get_json_nocache( $url );
 	error_log(json_encode($publication_info_arr));
 
