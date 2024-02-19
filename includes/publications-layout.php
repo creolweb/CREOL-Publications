@@ -82,7 +82,7 @@ function publications_display( $year, $type, $author ) {
 	error_log(json_encode($publication_info_arr));
 
 	$resultLength = count($publication_info_arr);
-	$totalPages = ceil($totalItems / $pageSize);
+	$totalPages = ceil($totalItems / 20);
 	?>
 
 	<div class="row float-right">
