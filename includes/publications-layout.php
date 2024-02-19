@@ -91,11 +91,6 @@ function publications_display( $year, $type, $author, $page ) {
 	</div>
 	<br>
 
-	<div id="paginationControls">
-
-	</div>
-
-
 	<script>
 		var publications = <?= json_encode($publication_info_arr); ?>;
 		var count = publications.length;
