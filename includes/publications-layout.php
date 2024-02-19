@@ -84,7 +84,7 @@ function publications_display( $year, $type, $author, $page ) {
 	?>
 
 	<div class="row float-right">
-		Found <?= $totalPages ?> publications.
+		Found <?= $resultLength ?> publications.
 	</div>
 	<br>
 
