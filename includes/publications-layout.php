@@ -85,23 +85,9 @@ function publications_display( $year, $type, $author, $page ) {
 	?>
 
 	<div class="row float-right">
-		Found <?= $resultLength ?> publications.
+		Found <?= $totalPages ?> publications.
 	</div>
 	<br>
-
-	<div id="paginationControls">
-    <?php if ($page > 1): ?>
-        <a href="javascript:void(0);" onclick="loadPage(<?= $page - 1 ?>)">Previous</a>
-    <?php endif; ?>
-
-    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-        <a href="javascript:void(0);" onclick="loadPage(<?= $i ?>)"><?= $i ?></a>
-    <?php endfor; ?>
-
-    <?php if ($page < $totalPages): ?>
-        <a href="javascript:void(0);" onclick="loadPage(<?= $page + 1 ?>)">Next</a>
-    <?php endif; ?>
-</div>
 
 	<script>
 		var publications = <?= json_encode($publication_info_arr); ?>;
