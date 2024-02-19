@@ -93,9 +93,9 @@ function publications_display( $year, $type, $author ) {
 		<div class="px-2 pb-3 container">
 			<?php if ( $curr->PublicationType != $currentType ) {
 				?>
-				<div class="font-weight-bold">
+				<span class="font-weight-bold">
 					<?= pub_type($curr->PublicationType) ?>
-				</div>
+				</span>
 				<?php
 				$currentType = $curr->PublicationType;
 			}?>
