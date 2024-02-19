@@ -92,13 +92,18 @@ function publications_display( $year, $type, $author ) {
 		?>
 		<div class="px-2 pb-3 container">
 			<div class="row float-right">
-				Found 
-				<script>
-				var publications = <?= json_encode($publication_info_arr); ?>;
-				publications.length; 
-				</script> 
-				publications.
+				Found <span id="publicationCount"></span> publications.
 			</div>
+			<br>
+
+			<script>
+				var publications = <?= json_encode($publication_info_arr); ?>;
+				// Calculate the length of the publications array
+				var count = publications.length;
+				
+				// Use DOM manipulation to insert the count into the 'publicationCount' span
+				document.getElementById('publicationCount').textContent = count;
+			</script>
 			<br>
 			<?php if ( $curr->PublicationType != $currentType ) {
 				?>
