@@ -86,25 +86,23 @@ function publications_display( $year, $type, $author ) {
     	console.log(<?= json_encode($url); ?>);
     	console.log(<?= json_encode(get_json_nocache('$url')); ?>);
 	</script>
-	<?php
-	$currentType = -1;
-	foreach ( $publication_info_arr as $curr ) {
-		?>
-		<div class="px-2 pb-3 container">
-			<div class="row float-right">
+	<div class="row float-right">
 				Found <span id="publicationCount"></span> publications.
 			</div>
 			<br>
 
 			<script>
 				var publications = <?= json_encode($publication_info_arr); ?>;
-				// Calculate the length of the publications array
 				var count = publications.length;
-				
-				// Use DOM manipulation to insert the count into the 'publicationCount' span
-				document.getElementById('publicationCount').textContent = count;
+				document.getElementById('publicationCount').textContent = " " + count + " ";
 			</script>
 			<br>
+	<?php
+	$currentType = -1;
+	foreach ( $publication_info_arr as $curr ) {
+		?>
+		<div class="px-2 pb-3 container">
+			
 			<?php if ( $curr->PublicationType != $currentType ) {
 				?>
 				<div class="row font-weight-bold">
