@@ -76,11 +76,7 @@ function publications_form_display() {
 	return ob_get_clean();
 }
 
-function publications_display( $year, $type, $author, $page ) {
-	if (!isset($page) || $page < 1) {
-        $page = 1;
-    }
-
+function publications_display( $year, $type, $author ) {
 	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $_GET['yr'] . '&Type=' . $_GET['type'] . '&Author=' . $_GET['author'];
 	$publication_info_arr = get_json_nocache( $url );
 	error_log(json_encode($publication_info_arr));
@@ -93,7 +89,6 @@ function publications_display( $year, $type, $author, $page ) {
 		Found <?= $resultLength ?> publications.
 	</div>
 	<br>
-	
 
 	<script>
 		var publications = <?= json_encode($publication_info_arr); ?>;
