@@ -76,23 +76,32 @@ function publications_form_display() {
 	return ob_get_clean();
 }
 
-function publications_display( $year, $type, $author ) {
+function publications_display( $year, $type, $author, $page ) {
 	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $_GET['yr'] . '&Type=' . $_GET['type'] . '&Author=' . $_GET['author'];
 	$publication_info_arr = get_json_nocache( $url );
 	error_log(json_encode($publication_info_arr));
-
-	$totalPages = count($publication_info_arr);
+	$resultLength = count($publication_info_arr);
+	$totalPages = ceil($totalItems / $pageSize)
 	?>
-	
-	<script>
-    	console.log(<?= json_encode($url); ?>);
-    	console.log(<?= json_encode(get_json_nocache('$url')); ?>);
-	</script>
+
 	<div class="row float-right">
-		<!-- Found &nbsp;<span id="publicationCount"></span>&nbsp;publications. -->
-		Found <?= $totalPages ?> publications.
+		Found <?= $resultLength ?> publications.
 	</div>
 	<br>
+
+	<div id="paginationControls">
+    <?php if ($page > 1): ?>
+        <a href="javascript:void(0);" onclick="loadPage(<?= $page - 1 ?>)">Previous</a>
+    <?php endif; ?>
+
+    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+        <a href="javascript:void(0);" onclick="loadPage(<?= $i ?>)"><?= $i ?></a>
+    <?php endfor; ?>
+
+    <?php if ($page < $totalPages): ?>
+        <a href="javascript:void(0);" onclick="loadPage(<?= $page + 1 ?>)">Next</a>
+    <?php endif; ?>
+</div>
 
 	<script>
 		var publications = <?= json_encode($publication_info_arr); ?>;
