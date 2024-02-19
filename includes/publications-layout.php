@@ -61,12 +61,12 @@ function publications_form_display() {
 				<?php
 				if ( isset( $_GET['year'] ) && isset( $_GET['type'] ) && isset( $_GET['author'] ) ) {
 					if ( $_GET['year'] == ALL_YEARS && $_GET['type'] == ALL_TYPES && $_GET['author'] == ALL_AUTHORS ) {
-						publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS);
+						publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS, 1);
 					} else {
-						publications_display($_GET['year'], $_GET['type'], $_GET['author']);
+						publications_display($_GET['year'], $_GET['type'], $_GET['author'], 1);
 					}
 				} else {
-					publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS);
+					publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS, 1);
 				}
 				?>
 			</div>
@@ -76,8 +76,8 @@ function publications_form_display() {
 	return ob_get_clean();
 }
 
-function publications_display( $year, $type, $author ) {
-	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $_GET['yr'] . '&Type=' . $_GET['type'] . '&Author=' . $_GET['author'];
+function publications_display( $year, $type, $author, $page ) {
+	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $_GET['yr'] . '&Type=' . $_GET['type'] . '&Author=' . $_GET['author'] . $_GET['page'];
 	$publication_info_arr = get_json_nocache( $url );
 	error_log(json_encode($publication_info_arr));
 
