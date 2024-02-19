@@ -90,6 +90,10 @@ function publications_display( $year, $type, $author, $pg ) {
 	</div>
 	<br>
 
+	<?php if ($page > 1): ?>
+		<a href="?yr=<?= $year ?>&type=<?= $type ?>&author=<?= $author ?>&pg=<?= $pg - 1 ?>">Previous</a>
+	<?php endif; ?>
+
 	<script>
 		var publications = <?= json_encode($publication_info_arr); ?>;
 		var count = publications.length;
