@@ -84,33 +84,11 @@ function publications_display($year, $type, $author, $page, $pageSize = 20) {
 	</script>
 	<?php
 	
-	// $count = count($publication_info_arr->response);
-    // Display the current page and total number of pages
-    echo "<div>Page $page of $totalPages</div>";
-
-    // Generate pagination controls
-    echo '<div class="pagination-controls">';
-    if ($page > 1) {
-        echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&page=' . ($page - 1) . '">Previous</a>';
-    }
-
-    for ($i = 1; $i <= $totalPages; $i++) {
-        echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&page=' . $i . '">' . $i . '</a>';
-    }
-
-    if ($page < $totalPages) {
-        echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&page=' . ($page + 1) . '">Next</a>';
-    }
-    echo '</div>';
-
-    $url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $year . '&Type=' . $type . '&Author=' . $author . '&Page=' . $page . '&PageSize=' . $pageSize;
-    $publication_info_arr = get_json_nocache($url);
-
 	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $_GET['yr'] . '&Type=' . $_GET['type'] . '&Author=' . $_GET['author'];
 	$publication_info_arr = get_json_nocache( $url );
 	error_log(json_encode($publication_info_arr));
 
-	$totalPages = count($publication_info_arr);
+	// $totalPages = count($publication_info_arr);
 	?>
 	
 	<script>
