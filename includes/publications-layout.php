@@ -82,7 +82,6 @@ function publications_display( $year, $type, $author, $page ) {
 	error_log(json_encode($publication_info_arr));
 	$page = 2;
 	$resultLength = count($publication_info_arr);
-	// $totalPages = ceil($totalItems / 20);
 	$totalPages = 2;
 
 	?>
