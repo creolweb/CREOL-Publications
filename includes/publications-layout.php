@@ -91,6 +91,9 @@ function publications_display( $year, $type, $author ) {
 	foreach ( $publication_info_arr as $curr ) {
 		?>
 		<div class="px-2 pb-3 container">
+			<div class="row float-right">
+				Found <? count($publication_info_arr) ?> publications.
+			</div>
 			<?php if ( $curr->PublicationType != $currentType ) {
 				?>
 				<div class="row font-weight-bold">
