@@ -82,7 +82,9 @@ function publications_display( $year, $type, $author, $page ) {
 	error_log(json_encode($publication_info_arr));
 	$page = 2;
 	$resultLength = count($publication_info_arr);
-	$totalPages = ceil($totalItems / 20);
+	// $totalPages = ceil($totalItems / 20);
+	$totalPages = 2;
+
 	?>
 
 	<div class="row float-right">
@@ -92,15 +94,15 @@ function publications_display( $year, $type, $author, $page ) {
 
 	<div id="paginationControls">
 		<?php if ($page > 1): ?>
-			<a href="javascript:void(0);" onclick="loadPage(<?= $page - 1 ?>)">Previous</a>
+			<!-- <a href="javascript:void(0);" onclick="loadPage(<?= $page - 1 ?>)">Previous</a> -->
 		<?php endif; ?>
 
 		<?php for ($i = 1; $i <= $totalPages; $i++): ?>
-			<a href="javascript:void(0);" onclick="loadPage(<?= $i ?>)"><?= $i ?></a>
+			<!-- <a href="javascript:void(0);" onclick="loadPage(<?= $i ?>)"><?= $i ?></a> -->
 		<?php endfor; ?>
 
 		<?php if ($page < $totalPages): ?>
-			<a href="javascript:void(0);" onclick="loadPage(<?= $page + 1 ?>)">Next</a>
+			<!-- <a href="javascript:void(0);" onclick="loadPage(<?= $page + 1 ?>)">Next</a> -->
 		<?php endif; ?>
 	</div>
 
