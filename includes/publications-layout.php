@@ -84,6 +84,7 @@ function publications_display($year, $type, $author, $page, $pageSize = 20) {
 	</script>
 	<?php
 	$totalPages = count($publication_info_arr);
+	$count = count($publication_info_arr->response);
     // Display the current page and total number of pages
     echo "<div>Page $page of $totalPages</div>";
 
@@ -116,7 +117,9 @@ function publications_display($year, $type, $author, $page, $pageSize = 20) {
 	</script>
 
 	<div class="row float-right">
-		Found&nbsp;<span id="publicationCount"></span>&nbsp;publications.
+		<!-- Found&nbsp;<span id="publicationCount"></span>&nbsp;publications. -->
+		Found <?= $totalPages ?> publications.
+		Found <?= $count ?> publications.
 	</div>
 	<br>
 	<script>
