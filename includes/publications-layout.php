@@ -80,6 +80,8 @@ function publications_display( $year, $type, $author ) {
 	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $_GET['yr'] . '&Type=' . $_GET['type'] . '&Author=' . $_GET['author'];
 	$publication_info_arr = get_json_nocache( $url );
 	error_log(json_encode($publication_info_arr));
+
+	$totalPages = count($publication_info_arr);
 	?>
 	
 	<script>
@@ -87,7 +89,8 @@ function publications_display( $year, $type, $author ) {
     	console.log(<?= json_encode(get_json_nocache('$url')); ?>);
 	</script>
 	<div class="row float-right">
-		Found &nbsp;<span id="publicationCount"></span>&nbsp;publications.
+		<!-- Found &nbsp;<span id="publicationCount"></span>&nbsp;publications. -->
+		Found <?= $totalPages ?> publications.
 	</div>
 	<br>
 
