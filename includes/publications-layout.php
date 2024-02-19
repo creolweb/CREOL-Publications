@@ -77,8 +77,11 @@ function publications_form_display() {
 }
 
 function publications_display( $year, $type, $author, $page ) {
-	$page = 1;
-	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $_GET['yr'] . '&Type=' . $_GET['type'] . '&Author=' . $_GET['author'] . '&Page=' . $page;
+	if (!isset($page) || $page < 1) {
+        $page = 1;
+    }
+
+	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $year . '&Type=' . $type . '&Author=' . $author . '&Page=' . $page;
 	$publication_info_arr = get_json_nocache( $url );
 	error_log(json_encode($publication_info_arr));
 
