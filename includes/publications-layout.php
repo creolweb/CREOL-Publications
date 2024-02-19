@@ -87,16 +87,15 @@ function publications_display( $year, $type, $author ) {
     	console.log(<?= json_encode(get_json_nocache('$url')); ?>);
 	</script>
 	<div class="row float-right">
-				Found <span id="publicationCount"></span> publications.
-			</div>
-			<br>
+		Found &nbsp;<span id="publicationCount"></span>&nbsp;publications.
+	</div>
+	<br>
 
-			<script>
-				var publications = <?= json_encode($publication_info_arr); ?>;
-				var count = publications.length;
-				document.getElementById('publicationCount').textContent = ' ' + count + ' ';
-			</script>
-			<br>
+	<script>
+		var publications = <?= json_encode($publication_info_arr); ?>;
+		var count = publications.length;
+		document.getElementById('publicationCount').textContent = count;
+	</script>
 	<?php
 	$currentType = -1;
 	foreach ( $publication_info_arr as $curr ) {
