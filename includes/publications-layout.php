@@ -100,12 +100,12 @@ function publications_display( $year, $type, $author ) {
 				$currentType = $curr->PublicationType;
 			}?>
 			<div class="row">
-				<div class="col-1">
+				<div class="col-sm">
 					<span class="h-5 font-weight-bold letter-spacing-1">
 						<?= $curr->PublicationYear ?>
 					</span>
 				</div>
-				<div class="col-mb-2">
+				<div class="col-sm">
 					<?= $curr->Authors ?>.
 					<span class="fst-italic">
 					"<?= $curr->Title ?>".

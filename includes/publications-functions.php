@@ -7,7 +7,7 @@ function pub_type($number) {
         case 2:
             return "Book Chapters";
         case 3:
-            return "Journal Papers";
+            return "Journal Papers (refereed)";
         case 4:
             return "Conference Proceedings";
         case 5:
