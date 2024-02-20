@@ -113,8 +113,13 @@ function publications_display( $year, $type, $author, $pg ) {
     if ($page < $totalPages) {
         echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '">Next</a>';
     }
+
 	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $year . '&Type=' . $type . '&Author=' . $author . '&pg=' . $pg;
-	$publication_info_arr = get_json_nocache( $url );
+	$publication_info_arr = get_json_nocache($url);
+
+	$countUrl = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfoCount?yr=' . $year . '&Type=' . $type . '&Author=' . $author;
+	$total_publications = get_json_nocache($countUrl);
+
 	error_log(json_encode($publication_info_arr));
 
 	$resultLength = count($publication_info_arr);
@@ -123,7 +128,7 @@ function publications_display( $year, $type, $author, $pg ) {
 	?>
 
 	<div class="row float-right">
-		Found <?= $resultLength ?> publications.
+		Found <?= $total_publications ?> publications.
 	</div>
 	<br>
 
