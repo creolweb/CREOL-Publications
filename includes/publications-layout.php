@@ -61,8 +61,20 @@
 				<?php
 				if ( isset( $_GET['year'] ) && isset( $_GET['type'] ) && isset( $_GET['author'] ) ) {
 					if ( $_GET['year'] == ALL_YEARS && $_GET['type'] == ALL_TYPES && $_GET['author'] == ALL_AUTHORS ) {
+						?>
+						<script>
+							const urlParams = new URLSearchParams(window.location.search);
+							console.log(urlParams)
+							console.log("1")
+							document.getElementById("yr").value = urlParams.get("year");
+							document.getElementById("type").value = urlParams.get("type");
+							document.getElementById("author").value = urlParams.get("author");
+							
+						</script>
+						<?php
 						publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS, 1);
 					} else {
+						publications_display($_GET['year'], $_GET['type'], $_GET['author'], 1);
 						?>
 						<script>
 							const urlParams = new URLSearchParams(window.location.search);
@@ -74,10 +86,19 @@
 							
 						</script>
 						<?php
-						// publications_display($_GET['year'], $_GET['type'], $_GET['author'], 1);
-						
 					}
 				} else {
+					?>
+						<script>
+							const urlParams = new URLSearchParams(window.location.search);
+							console.log(urlParams)
+							console.log("3")
+							document.getElementById("yr").value = urlParams.get("year");
+							document.getElementById("type").value = urlParams.get("type");
+							document.getElementById("author").value = urlParams.get("author");
+							
+						</script>
+						<?php
 					publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS, 1);
 				}
 				?>
