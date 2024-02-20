@@ -16,7 +16,7 @@
 		<div class="row">
 			<!-- Form -->
 				<form method="get" name="form" class="form-inline">
-					<div class="col-xs-12 col-sm-6 col-md-1 form-group">
+					<div class="col-xs-12 col-sm-6 col-md-2 form-group">
 						<select name="yr" id="yr" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
 							<option value=0>Year</option>
 							<?php for ( $i = 0; $i < count( $year_arr ); $i++ ) : ?>
@@ -26,7 +26,7 @@
 							<?php endfor; ?>
 						</select>
 					</div>
-					<div class="col-xs-12 col-sm-6 col-md-1 form-group">
+					<div class="col-xs-12 col-sm-6 col-md-2 form-group">
 						<select name="type" id="type" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
 							<option value=0>Type</option>
 							<?php for ( $i = 0; $i < count( $type_arr ); $i++ ) : ?>
@@ -36,7 +36,7 @@
 							<?php endfor; ?>
 						</select>
 					</div>
-					<div class="col-xs-12 col-sm-6 col-md-1 form-group">
+					<div class="col-xs-12 col-sm-6 col-md-2 form-group">
 						<select name="author" id="author" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
 							<option value=0>Author</option>
 							<?php for ( $i = 0; $i < count( $author_arr ); $i++ ) : ?>
