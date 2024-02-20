@@ -140,7 +140,7 @@ function publications_display( $year, $type, $author, $page ) {
             if ($x == $page) {
                 echo '<strong>' . $x . '</strong> ';
             } else {
-                echo '<a onClick="publications_display($year, $type, $author, $x)">' . $x . '</a> ';
+                echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $x . '">' . $x .'</a> '; 
             }
         }
     }
