@@ -17,7 +17,7 @@
 			<!-- Form -->
 				<form method="get" name="form" class="form-inline">
 					<div class="col-xs-12 col-sm-6 col-md-3 form-group">
-						<select name="yr" id="yr" class="form-control" onchange="this.form.submit()" style="width: 100%;">
+						<select name="yr" id="yr" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
 							<option value=0>Year</option>
 							<?php for ( $i = 0; $i < count( $year_arr ); $i++ ) : ?>
 								<option value="<?= $year_arr[ $i ]->PublicationTxt ?>">
@@ -27,7 +27,7 @@
 						</select>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-3 form-group">
-						<select name="type" id="type" class="form-control" onchange="this.form.submit()" style="width: 100%;">
+						<select name="type" id="type" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
 							<option value=0>Type</option>
 							<?php for ( $i = 0; $i < count( $type_arr ); $i++ ) : ?>
 								<option value="<?= $type_arr[ $i ]->PublicationType ?>">
@@ -37,7 +37,7 @@
 						</select>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-3 form-group">
-						<select name="author" id="author" class="form-control" onchange="this.form.submit()" style="width: 100%;">
+						<select name="author" id="author" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
 							<option value=0>Author</option>
 							<?php for ( $i = 0; $i < count( $author_arr ); $i++ ) : ?>
 								<option value="<?= $author_arr[ $i ]->PeopleID ?>">
@@ -46,6 +46,7 @@
 							<?php endfor; ?>
 						</select>
 					</div>
+					
 					<div class="col-xs-12 col-sm-6 col-md-3 form-group">
 							<div class="input-group">
 							<input type="search" class="form-control" placeholder="Search" aria-label="Search" style="width: 100%;">
@@ -56,6 +57,22 @@
 					</div>
 					<br>
 				</form>
+
+				<script>
+					let form = document.getElementsByName("form")[0];
+					let elements = form.elements;
+					function handleSelectorChange() {
+						for (let i = 0, len = elements.length; i < len; ++i) {
+							elements[i].style.pointerEvents = "none";
+							elements[i].onclick = () => false;
+							elements[i].onkeydown = () => false;
+							elements[i].style.backgroundColor = "#f0f0f0";
+			            	elements[i].style.color = "#6c757d";
+			            	elements[i].style.border = "1px solid #ced4da";
+						}
+						form.submit();
+					}
+				</script>
 
 			<div class="col mt-lg-0 mt-5">d
 				<?php
