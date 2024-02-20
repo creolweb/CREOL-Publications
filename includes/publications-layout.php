@@ -114,14 +114,13 @@ function publications_display( $year, $type, $author, $pg ) {
 
 	error_log(json_encode($publication_info_arr));
 
-	$resultLength = count($publication_info_arr);
 	$pageSize = 20;
     $totalPages = ceil($total_publications / $pageSize);
 	?>
 
 	<div class="row float-right">
 		Found <?= $total_publications ?> publications.
-		<? $totalPages ?>
+		[[<? $totalPages ?>]]
 	</div>
 	<br>
 
