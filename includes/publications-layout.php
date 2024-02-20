@@ -118,7 +118,7 @@ function publications_display( $year, $type, $author, $pg ) {
 	$publication_info_arr = get_json_nocache($url);
 
 	$countUrl = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfoCount?yr=' . $year . '&Type=' . $type . '&Author=' . $author;
-	$total_publications = get_json_nocache($countUrl);
+	$total_publications = get_plain_text($countUrl);
 
 	error_log(json_encode($publication_info_arr));
 
