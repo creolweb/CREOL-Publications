@@ -203,36 +203,36 @@ function publications_display( $year, $type, $author, $page, $search ) {
 		</div>
 			
 		<?php
-		$range = 3;
-		echo '<div class="text-right">';
-		if ($page > 1) {		
-			echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=1">First</a> ';
-			echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '"><i class="fa fa-caret-left" aria-hidden="true"></i></a> ';
-		}
-		else {
-			echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=1">First</span> ';
-			echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '"><i class="fa fa-caret-left" aria-hidden="true"></i></span> ';
-		}
-	
-		for ($x = ($page - $range); $x < (($page + $range) + 1); $x++) {
-			if (($x > 0) && ($x <= $totalPages)) {
-				if ($x == $page) {
-					echo '<strong>' . $x . '</strong> ';
-				} else {
-					echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $x . '">' . $x .'</a> '; 
-				}
+	}
+	$range = 3;
+	echo '<div class="text-right">';
+	if ($page > 1) {		
+		echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=1">First</a> ';
+		echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '"><i class="fa fa-caret-left" aria-hidden="true"></i></a> ';
+	}
+	else {
+		echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=1">First</span> ';
+		echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '"><i class="fa fa-caret-left" aria-hidden="true"></i></span> ';
+	}
+
+	for ($x = ($page - $range); $x < (($page + $range) + 1); $x++) {
+		if (($x > 0) && ($x <= $totalPages)) {
+			if ($x == $page) {
+				echo '<strong>' . $x . '</strong> ';
+			} else {
+				echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $x . '">' . $x .'</a> '; 
 			}
 		}
-	
-		if ($page < $totalPages) {
-			echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '"><i class="fa fa-caret-right" aria-hidden="true"></i></a> ';
-			echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $totalPages . '">Last</a>';
-		}
-		else {
-			echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '"><i class="fa fa-caret-right" aria-hidden="true"></i></span> ';
-			echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $totalPages . '">Last</span>';
-		}
-	
-		echo '</div>';
 	}
+
+	if ($page < $totalPages) {
+		echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '"><i class="fa fa-caret-right" aria-hidden="true"></i></a> ';
+		echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $totalPages . '">Last</a>';
+	}
+	else {
+		echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '"><i class="fa fa-caret-right" aria-hidden="true"></i></span> ';
+		echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $totalPages . '">Last</span>';
+	}
+
+	echo '</div>';
 }
