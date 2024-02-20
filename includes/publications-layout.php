@@ -49,7 +49,7 @@
 
 					<input type="hidden" name="pg" id="pg" value="<?php echo isset($_GET['pg']) ? $_GET['pg'] : 1; ?>">
 					
-					<div class="col-xs-12 col-sm-6 col-md-5 form-group">
+					<div class="col-xs-12 col-sm-6 col-md-8 form-group">
 							<div class="input-group">
 							<input type="search" id="search" name="search" class="form-control" placeholder="Search" aria-label="Search" style="width: 100%;">
 							<span class="input-group-btn">
