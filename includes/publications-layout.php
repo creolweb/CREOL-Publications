@@ -51,7 +51,7 @@
 					
 					<div class="col-xs-12 col-sm-6 col-md-3 form-group">
 							<div class="input-group">
-							<input type="search" name="search" class="form-control" placeholder="Search" aria-label="Search" style="width: 100%;">
+							<input type="search" id="search" name="search" class="form-control" placeholder="Search" aria-label="Search" style="width: 100%;">
 							<span class="input-group-btn">
 								<button class="btn btn-primary" type="button"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></button>
 							</span>
@@ -89,7 +89,8 @@
 							document.getElementById("yr").value = urlParams.get("yr");
 							document.getElementById("type").value = urlParams.get("type");
 							document.getElementById("author").value = urlParams.get("author");
-
+							document.getElementById("search").value = urlParams.get("search");
+							
 							
 						</script>
 						<?php
