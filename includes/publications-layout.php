@@ -76,7 +76,7 @@
 					}
 				</script>
 
-			<div class="col mt-lg-0 mt-5">d
+			<div class="col mt-lg-0 mt-5">
 				<?php
 				if ( isset( $_GET['yr'] ) && isset( $_GET['type'] ) && isset( $_GET['author'] ) ) {
 					if ( $_GET['yr'] == ALL_YEARS && $_GET['type'] == ALL_TYPES && $_GET['author'] == ALL_AUTHORS ) {
@@ -149,6 +149,11 @@ function publications_display( $year, $type, $author, $page ) {
         echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '">»</a> ';
         echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $totalPages . '">Last</a>';
     }
+	else {
+		echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '">»</span> ';
+        echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $totalPages . '">Last</span>';
+	}
+
     echo '</div>';
 	?>
 	<script>
