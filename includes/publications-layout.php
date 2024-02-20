@@ -67,7 +67,7 @@ function publications_form_display() {
 						?>
 						<script>
 						const urlParams = new URLSearchParams(window.location.search);
-							document.getElementById("year").value = urlParams.get("year");
+							document.getElementById("yr").value = urlParams.get("year");
 							document.getElementById("type").value = urlParams.get("type");
 							document.getElementById("author").value = urlParams.get("author");
 							
