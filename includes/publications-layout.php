@@ -125,6 +125,7 @@ function publications_display( $year, $type, $author, $page ) {
 
 	<?php
 	$range = 4;
+	echo '<div>';
     if ($page > 1) {
         echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=1">First</a> ';
         echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '">«</a> ';
