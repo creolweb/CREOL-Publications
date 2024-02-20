@@ -49,9 +49,9 @@
 
 					<input type="hidden" name="pg" id="pg" value="<?php echo isset($_GET['pg']) ? $_GET['pg'] : 1; ?>">
 					
-					<div class="col-xs-12 col-sm-6 col-md-4 form-group">
+					<div class="col-xs-12 col-sm-6 col-md-6 form-group">
 						<div class="input-group" style="width: 100%;">
-							<input type="search" id="search" name="search" class="form-control" placeholder="Search" aria-label="Search" style="width: 100%;">
+							<input type="search" id="search" name="search" class="form-control" placeholder="Search" aria-label="Search">
 							<span class="input-group-btn">
 								<button class="btn btn-primary" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
 							</span>
@@ -235,5 +235,6 @@ function publications_display( $year, $type, $author, $page, $search ) {
 	}
 
 	echo '</div>';
+	echo '<br>';
 	echo '<br>';
 }
