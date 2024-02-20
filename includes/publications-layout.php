@@ -47,7 +47,7 @@
 						</select>
 					</div>
 
-					<input type="hidden" name="pg" id="pg" value="<?php echo isset($_GET['pg']) ? $_GET['pg'] : 1; ?>">
+					<input name="pg" id="pg" value="<?php echo isset($_GET['pg']) ? $_GET['pg'] : 1; ?>">
 					
 					<div class="col-xs-12 col-sm-6 col-md-3 form-group">
 							<div class="input-group">
