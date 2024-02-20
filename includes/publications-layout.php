@@ -118,6 +118,9 @@ function publications_display( $year, $type, $author, $page ) {
     $totalPages = ceil($total_publications / $pageSize);
 	?>
 
+	<div class="row float-right">
+		Found <?= $total_publications ?> publications.
+	</div>
 	<br>
 
 	<?php
