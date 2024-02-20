@@ -63,7 +63,6 @@
 					if ( $_GET['year'] == ALL_YEARS && $_GET['type'] == ALL_TYPES && $_GET['author'] == ALL_AUTHORS ) {
 						publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS, 1);
 					} else {
-						publications_display($_GET['year'], $_GET['type'], $_GET['author'], 1);
 						?>
 						<script>
 							const urlParams = new URLSearchParams(window.location.search);
@@ -75,6 +74,8 @@
 							
 						</script>
 						<?php
+						publications_display($_GET['year'], $_GET['type'], $_GET['author'], 1);
+						
 					}
 				} else {
 					publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS, 1);
