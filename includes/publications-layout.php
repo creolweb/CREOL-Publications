@@ -235,4 +235,5 @@ function publications_display( $year, $type, $author, $page, $search ) {
 	}
 
 	echo '</div>';
+	echo '<br>';
 }
