@@ -129,7 +129,7 @@ function publications_display( $year, $type, $author, $page, $search ) {
 	echo '<div class="text-right">';
     if ($page > 1) {		
         echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=1">First</a> ';
-        echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '">«</a> ';
+        echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '"><i class="fa fa-caret-left" aria-hidden="true"></i></a> ';
     }
 	else {
 		echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=1">First</span> ';
