@@ -64,6 +64,15 @@ function publications_form_display() {
 						publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS, 1);
 					} else {
 						publications_display($_GET['year'], $_GET['type'], $_GET['author'], 1);
+						?>
+						<script>
+						const urlParams = new URLSearchParams(window.location.search);
+							document.getElementById("year").value = urlParams.get("year");
+							document.getElementById("type").value = urlParams.get("type");
+							document.getElementById("author").value = urlParams.get("author");
+							
+						</script>
+						<?php
 					}
 				} else {
 					publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS, 1);
