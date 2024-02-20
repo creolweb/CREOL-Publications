@@ -53,7 +53,7 @@
 							<div class="input-group">
 							<input type="search" id="search" name="search" class="form-control" placeholder="Search" aria-label="Search" style="width: 100%;">
 							<span class="input-group-btn">
-								<button class="btn btn-primary" type="button"><i class="fa-search" aria-hidden="true"></i></button>
+								<button class="btn btn-primary" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
 							</span>
 						</div>
 					</div>
