@@ -119,6 +119,7 @@ function publications_display( $year, $type, $author, $page, $search ) {
     $totalPages = ceil($total_publications / $pageSize);
 	?>
 
+	<br>
 	<div class="row float-right">
 		Found <?= $total_publications ?> publications.
 	</div>
@@ -197,10 +198,6 @@ function publications_display( $year, $type, $author, $page, $search ) {
 					<?php if (isset($curr->DOI) && $curr->DOI != '' && isset($curr->DOIVisble)) : ?>
 						<a href="<?= $curr->DOI ?>" target="_blank"><i class="fa fa-external-link"></i></a>
 					<?php endif; ?>
-
-
-
-
 				</div>
 			</div>
 		</div>
