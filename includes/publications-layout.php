@@ -47,7 +47,7 @@
 						</select>
 					</div>
 
-					<input name="pg" id="pg" value="<?php echo isset($_GET['pg']) ? $_GET['pg'] : 1; ?>">
+					<input type="hidden" name="pg" id="pg" value="<?php echo isset($_GET['pg']) ? $_GET['pg'] : 1; ?>">
 					
 					<div class="col-xs-12 col-sm-6 col-md-3 form-group">
 							<div class="input-group">
@@ -82,7 +82,7 @@
 					if ( $_GET['yr'] == ALL_YEARS && $_GET['type'] == ALL_TYPES && $_GET['author'] == ALL_AUTHORS ) {
 						publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS, 1);
 					} else {
-						publications_display($_GET['yr'], $_GET['type'], $_GET['author'], 1);
+						publications_display($_GET['yr'], $_GET['type'], $_GET['author'], $_GET['pg']);
 						?>
 						<script>
 							const urlParams = new URLSearchParams(window.location.search);
