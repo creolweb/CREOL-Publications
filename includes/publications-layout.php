@@ -51,7 +51,7 @@
 					
 					<div class="col-xs-12 col-sm-6 col-md-3 form-group">
 							<div class="input-group">
-							<input type="search" class="form-control" placeholder="Search" aria-label="Search" style="width: 100%;">
+							<input type="search" name="search" class="form-control" placeholder="Search" aria-label="Search" style="width: 100%;">
 							<span class="input-group-btn">
 								<button class="btn btn-primary" type="button"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></button>
 							</span>
@@ -105,8 +105,8 @@
 	return ob_get_clean();
 }
 
-function publications_display( $year, $type, $author, $page ) {
-	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $year . '&Type=' . $type . '&Author=' . $author . '&pg=' . $page;
+function publications_display($year, $type, $author, $page, $search) {
+    $url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $year . '&Type=' . $type . '&Author=' . $author . '&pg=' . $page . '&search=' . urlencode($search);
 	$publication_info_arr = get_json_nocache($url);
 
 	$countUrl = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfoCount?yr=' . $year . '&Type=' . $type . '&Author=' . $author;
