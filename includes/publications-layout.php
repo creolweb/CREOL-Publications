@@ -187,8 +187,14 @@ function publications_display( $year, $type, $author, $page ) {
 					"<?= $curr->Title ?>".
 					</span>
 					<?= $curr->Reference ?>
-					<?= !empty($curr->PDFLink) ? '<i class="fa fa-file-pdf-o"><a href="'.$curr->PDFLink.'" target="_blank"></a></i> ' : '' ?>
-					<?= !empty($curr->PDFLink) ? '<i class="fa fa-external-link"><a href="'.$curr->DOI.'" target="_blank">PDF</a></i> ' : '' ?>
+					<?php if (isset($curr->PDFLink) && $curr->PDFLink != '') : ?>
+						<a href="<?= $curr->PDFLink ?>" target="_blank"><i class="fa fa-file-pdf-o"></i></a>
+					<?php endif; ?>
+					<?php if (isset($curr->DOI) && $curr->DOI != '') : ?>
+						<a href="<?= $curr->DOI ?>" target="_blank"><i class="fa fa-external-link"></i></a>
+					<?php endif; ?>
+
+
 
 
 				</div>
