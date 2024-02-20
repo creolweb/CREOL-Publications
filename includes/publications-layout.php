@@ -124,9 +124,9 @@ function publications_display( $year, $type, $author, $page ) {
 	<br>
 
 	<?php
-	$range = 4;
+	$range = 3;
 	echo '<div class="text-right">';
-    if ($page > 1) {
+    if ($page > 1) {		
         echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=1">First</a> ';
         echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '">«</a> ';
     }
@@ -183,13 +183,15 @@ function publications_display( $year, $type, $author, $page ) {
 				</div>
 				<div class="col-sm">
 					<?= $curr->Authors ?>.
-					<span class="fst-italic">
+					<span class="fw-italic">
 					"<?= $curr->Title ?>".
+					</span>
 					<?= $curr->PDFLink ?>
 					<a>
 						<i class="fa-solid fa-file-pdf" aria-hidden="true"></i>
 					</a>
-					</span>
+					<?= $curr->Reference ?>
+					
 				</div>
 			</div>
 		</div>
