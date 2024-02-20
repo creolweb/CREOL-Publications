@@ -67,11 +67,10 @@
 						?>
 						<script>
 							const urlParams = new URLSearchParams(window.location.search);
-							console.log(urlParams)
-							console.log("test")
 							document.getElementById("yr").value = urlParams.get("yr");
 							document.getElementById("type").value = urlParams.get("type");
 							document.getElementById("author").value = urlParams.get("author");
+
 							
 						</script>
 						<?php
@@ -88,12 +87,20 @@
 }
 
 function publications_display( $year, $type, $author, $pg ) {
-	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $year . '&Type=' . $type . '&Author=' . $author . '&pg=' . 1;
+
+    if ($page > 1) {
+        echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '">Previous</a>';
+    }
+    if ($page < $totalPages) {
+        echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '">Next</a>';
+    }
+	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $year . '&Type=' . $type . '&Author=' . $author . '&pg=' . $pg;
 	$publication_info_arr = get_json_nocache( $url );
 	error_log(json_encode($publication_info_arr));
 
 	$resultLength = count($publication_info_arr);
-	$totalPages = ceil($totalItems / 20);
+	$pageSize = 20;
+    $totalPages = ceil($resultLength / $pageSize);
 	?>
 
 	<div class="row float-right">
@@ -101,12 +108,13 @@ function publications_display( $year, $type, $author, $pg ) {
 	</div>
 	<br>
 
-	<?php if ($page > 1): ?>
-		<a href="?yr=<?= $year ?>&type=<?= $type ?>&author=<?= $author ?>&pg=<?= $pg - 1 ?>">Previous</a>
-	<?php endif; ?>
-
-	<a href="?yr=<?= $year ?>&type=<?= $type ?>&author=<?= $author ?>&page=<?= $page + 1 ?>">Next</a>
-
+	<?php if ($page > 1) {
+        echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '">Previous</a>';
+    }
+    if ($page < $totalPages) {
+        echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '">Next</a>';
+    }
+    ?>
 	<script>
 		var publications = <?= json_encode($publication_info_arr); ?>;
 		var count = publications.length;
