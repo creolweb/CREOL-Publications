@@ -120,18 +120,20 @@ function publications_display( $year, $type, $author, $pg ) {
 
 	<div class="row float-right">
 		Found <?= $total_publications ?> publications.
-		[[<?= $totalPages ?>]]
 	</div>
 	<br>
 
 	<?php
-	$range = 2;
-    echo '<div class="pagination">Found ' . $total_publications . ' publications.<br>';
+	$range = 4;
 
     if ($page > 1) {
         echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=1">First</a> ';
         echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '">«</a> ';
     }
+	else {
+		echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=1">First</span> ';
+        echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '">«</span> ';
+	}
 
     for ($x = ($page - $range); $x < (($page + $range) + 1); $x++) {
         if (($x > 0) && ($x <= $totalPages)) {
