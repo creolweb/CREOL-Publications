@@ -194,7 +194,7 @@ function publications_display( $year, $type, $author, $page, $search ) {
 					<?php if (isset($curr->Link) && $curr->Link != '') : ?>
 						<a href="<?= $curr->Link ?>" target="_blank"><i class="fa fa-external-link"></i></a>
 					<?php endif; ?>
-					<?php if (isset($curr->DOI) && $curr->DOI != '') : ?>
+					<?php if (isset($curr->DOI) && $curr->DOI != '' && isset($curr->DOIVisble)) : ?>
 						<a href="<?= $curr->DOI ?>" target="_blank"><i class="fa fa-external-link"></i></a>
 					<?php endif; ?>
 
