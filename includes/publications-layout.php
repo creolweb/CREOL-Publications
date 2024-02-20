@@ -120,7 +120,7 @@ function publications_display( $year, $type, $author, $pg ) {
 
 	<div class="row float-right">
 		Found <?= $total_publications ?> publications.
-		[[<? $totalPages ?>]]
+		[[<? $total_publications / $pageSize ?>]]
 	</div>
 	<br>
 
