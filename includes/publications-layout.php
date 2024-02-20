@@ -80,9 +80,9 @@
 				<?php
 				if ( isset( $_GET['yr'] ) && isset( $_GET['type'] ) && isset( $_GET['author'] ) ) {
 					if ( $_GET['yr'] == ALL_YEARS && $_GET['type'] == ALL_TYPES && $_GET['author'] == ALL_AUTHORS ) {
-						publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS, 1);
+						publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS, 1, "");
 					} else {
-						publications_display($_GET['yr'], $_GET['type'], $_GET['author'], $_GET['pg']);
+						publications_display($_GET['yr'], $_GET['type'], $_GET['author'], $_GET['pg'], $_GET['search']);
 						?>
 						<script>
 							const urlParams = new URLSearchParams(window.location.search);
@@ -105,8 +105,8 @@
 	return ob_get_clean();
 }
 
-function publications_display( $year, $type, $author, $page ) {
-	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $year . '&Type=' . $type . '&Author=' . $author . '&pg=' . $page;
+function publications_display( $year, $type, $author, $page, $search ) {
+	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $year . '&Type=' . $type . '&Author=' . $author . '&pg=' . $page . '&search=' . $search;
 	$publication_info_arr = get_json_nocache($url);
 
 	$countUrl = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfoCount?yr=' . $year . '&Type=' . $type . '&Author=' . $author;
