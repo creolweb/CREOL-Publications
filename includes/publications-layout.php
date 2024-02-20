@@ -106,8 +106,25 @@
 	return ob_get_clean();
 }
 
+function publications_display( $year, $type, $author, $page, $search ) {
+	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $year . '&Type=' . $type . '&Author=' . $author . '&pg=' . $page . '&search=' . $search;
+	$publication_info_arr = get_json_nocache($url);
 
-function render_page_controls($page) {
+	$countUrl = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfoCount?yr=' . $year . '&Type=' . $type . '&Author=' . $author;
+	$total_publications = get_plain_text($countUrl);
+
+	error_log(json_encode($publication_info_arr));
+
+	$pageSize = 20;
+    $totalPages = ceil($total_publications / $pageSize);
+	?>
+
+	<div class="row float-right">
+		Found <?= $total_publications ?> publications.
+	</div>
+	<br>
+
+	<?php
 	$range = 3;
 	echo '<div class="text-right">';
     if ($page > 1) {		
@@ -139,28 +156,7 @@ function render_page_controls($page) {
 	}
 
     echo '</div>';
-}
-
-function publications_display( $year, $type, $author, $page, $search ) {
-	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $year . '&Type=' . $type . '&Author=' . $author . '&pg=' . $page . '&search=' . $search;
-	$publication_info_arr = get_json_nocache($url);
-
-	$countUrl = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfoCount?yr=' . $year . '&Type=' . $type . '&Author=' . $author;
-	$total_publications = get_plain_text($countUrl);
-
-	error_log(json_encode($publication_info_arr));
-
-	$pageSize = 20;
-    $totalPages = ceil($total_publications / $pageSize);
 	?>
-
-	<div class="row float-right">
-		Found <?= $total_publications ?> publications.
-	</div>
-	<br>
-
-	<?= render_page_controls($page); ?>
-
 	<script>
 		var publications = <?= json_encode($publication_info_arr); ?>;
 		var count = publications.length;
