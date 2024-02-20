@@ -11,6 +11,9 @@
 
 	ob_start();
 	?>
+	<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+	</head>
 
 	<div class="container">
 		<div class="row">
@@ -187,7 +190,7 @@ function publications_display( $year, $type, $author, $page ) {
 					"<?= $curr->Title ?>".
 					</span>
 					<?= $curr->Reference ?>
-					<?= $curr->PDFLink ?>
+					<?= !empty($curr->PDFLink) ? '<i class="fa-solid fa-file-pdf"></i> <a href="'.$curr->PDFLink.'" target="_blank">PDF</a>' : '' ?>
 					<?= $curr->DOI ?>
 
 				</div>
