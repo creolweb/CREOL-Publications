@@ -147,11 +147,11 @@ function publications_display( $year, $type, $author, $page, $search ) {
     }
 
     if ($page < $totalPages) {
-        echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '">»</a> ';
+        echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '"><i class="fa fa-caret-right" aria-hidden="true"></i></a> ';
         echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $totalPages . '">Last</a>';
     }
 	else {
-		echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '">»</span> ';
+		echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '"><i class="fa fa-caret-right" aria-hidden="true"></i></span> ';
         echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $totalPages . '">Last</span>';
 	}
 
