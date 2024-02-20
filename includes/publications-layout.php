@@ -68,6 +68,7 @@
 						<script>
 							const urlParams = new URLSearchParams(window.location.search);
 							console.log(urlParams)
+							console.log("test")
 							document.getElementById("yr").value = urlParams.get("year");
 							document.getElementById("type").value = urlParams.get("type");
 							document.getElementById("author").value = urlParams.get("author");
@@ -109,7 +110,7 @@ function publications_display( $year, $type, $author, $pg ) {
 	<script>
 		var publications = <?= json_encode($publication_info_arr); ?>;
 		var count = publications.length;
-		document.getElementById('publicationCount').textContent = count;
+		// document.getElementById('publicationCount').textContent = count;
 	</script>
 	<?php
 	$currentType = -1;
