@@ -106,6 +106,41 @@
 	return ob_get_clean();
 }
 
+
+function render_page_controls($page) {
+	$range = 3;
+	echo '<div class="text-right">';
+    if ($page > 1) {		
+        echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=1">First</a> ';
+        echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '">«</a> ';
+    }
+	else {
+		echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=1">First</span> ';
+        echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '">«</span> ';
+	}
+
+    for ($x = ($page - $range); $x < (($page + $range) + 1); $x++) {
+        if (($x > 0) && ($x <= $totalPages)) {
+            if ($x == $page) {
+                echo '<strong>' . $x . '</strong> ';
+            } else {
+                echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $x . '">' . $x .'</a> '; 
+            }
+        }
+    }
+
+    if ($page < $totalPages) {
+        echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '">»</a> ';
+        echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $totalPages . '">Last</a>';
+    }
+	else {
+		echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '">»</span> ';
+        echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $totalPages . '">Last</span>';
+	}
+
+    echo '</div>';
+}
+
 function publications_display( $year, $type, $author, $page, $search ) {
 	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $year . '&Type=' . $type . '&Author=' . $author . '&pg=' . $page . '&search=' . $search;
 	$publication_info_arr = get_json_nocache($url);
@@ -125,7 +160,7 @@ function publications_display( $year, $type, $author, $page, $search ) {
 	<br>
 
 	<?= render_page_controls($page); ?>
-	
+
 	<script>
 		var publications = <?= json_encode($publication_info_arr); ?>;
 		var count = publications.length;
@@ -173,38 +208,4 @@ function publications_display( $year, $type, $author, $page, $search ) {
 			
 		<?php
 	}
-}
-
-function render_page_controls($page) {
-	$range = 3;
-	echo '<div class="text-right">';
-    if ($page > 1) {		
-        echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=1">First</a> ';
-        echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '">«</a> ';
-    }
-	else {
-		echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=1">First</span> ';
-        echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '">«</span> ';
-	}
-
-    for ($x = ($page - $range); $x < (($page + $range) + 1); $x++) {
-        if (($x > 0) && ($x <= $totalPages)) {
-            if ($x == $page) {
-                echo '<strong>' . $x . '</strong> ';
-            } else {
-                echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $x . '">' . $x .'</a> '; 
-            }
-        }
-    }
-
-    if ($page < $totalPages) {
-        echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '">»</a> ';
-        echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $totalPages . '">Last</a>';
-    }
-	else {
-		echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '">»</span> ';
-        echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $totalPages . '">Last</span>';
-	}
-
-    echo '</div>';
 }
