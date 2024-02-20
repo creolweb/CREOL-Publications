@@ -186,12 +186,10 @@ function publications_display( $year, $type, $author, $page ) {
 					<span class="fw-italic">
 					"<?= $curr->Title ?>".
 					</span>
-					<?= $curr->PDFLink ?>
-					<a>
-						<i class="fa-solid fa-file-pdf" aria-hidden="true"></i>
-					</a>
 					<?= $curr->Reference ?>
-					
+					<?= $curr->PDFLink ?>
+					<?= $curr->DOI ?>
+
 				</div>
 			</div>
 		</div>
