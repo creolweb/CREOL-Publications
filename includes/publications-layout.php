@@ -121,10 +121,12 @@ function publications_display( $year, $type, $author, $pg ) {
 
 	<div class="row float-right">
 		Found <?= $total_publications ?> publications.
+		<? $totalPages ?>
 	</div>
 	<br>
+
 	<?php
-	$range = 2; // adjust as needed; this controls how many links to show on each side of current page
+	$range = 2;
     echo '<div class="pagination">Found ' . $total_publications . ' publications.<br>';
 
     if ($page > 1) {
