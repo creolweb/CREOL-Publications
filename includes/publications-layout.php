@@ -133,7 +133,7 @@ function publications_display( $year, $type, $author, $page, $search ) {
     }
 	else {
 		echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=1">First</span> ';
-        echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '">«</span> ';
+        echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '"><i class="fa fa-caret-left" aria-hidden="true"></i></span> ';
 	}
 
     for ($x = ($page - $range); $x < (($page + $range) + 1); $x++) {
