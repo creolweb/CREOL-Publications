@@ -4,7 +4,7 @@
  **/
 
  // Handles the dropdown on the left.
-function publications_form_display() {
+ function publications_form_display() {
 	$year_arr = get_json_nocache( 'https://api.creol.ucf.edu/PublicationsJson.asmx/YearList' );
 	$type_arr = get_json_nocache( 'https://api.creol.ucf.edu/PublicationsJson.asmx/TypeList' );
 	$author_arr = get_json_nocache( 'https://api.creol.ucf.edu/PublicationsJson.asmx/AuthorList' );
@@ -66,8 +66,9 @@ function publications_form_display() {
 						publications_display($_GET['year'], $_GET['type'], $_GET['author'], 1);
 						?>
 						<script>
-						const urlParams = new URLSearchParams(window.location.search);
-							document.getElementById("yr").value = urlParams.get("yr");
+							const urlParams = new URLSearchParams(window.location.search);
+							console.log(urlParams)
+							document.getElementById("yr").value = urlParams.get("year");
 							document.getElementById("type").value = urlParams.get("type");
 							document.getElementById("author").value = urlParams.get("author");
 							
