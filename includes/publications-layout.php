@@ -74,7 +74,7 @@
 							
 						</script>
 						<?php
-						publications_display($_GET['year'], $_GET['type'], $_GET['author'], 1);
+						// publications_display($_GET['year'], $_GET['type'], $_GET['author'], 1);
 						
 					}
 				} else {
