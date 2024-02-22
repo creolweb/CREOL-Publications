@@ -94,7 +94,6 @@
 						<?php
 					}
 				} else {
-					?> <script> console.log("TEST") <?php
 					publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS, 1, "");
 				}
 				?>
