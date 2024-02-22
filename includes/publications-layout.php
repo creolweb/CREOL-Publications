@@ -96,6 +96,7 @@
 						<?php
 					}
 				} else {
+					?> <script> console.log("TEST") <?php
 					publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS, 1);
 				}
 				?>
@@ -168,7 +169,6 @@ function publications_display( $year, $type, $author, $page, $search ) {
 	foreach ( $publication_info_arr as $curr ) {
 		?>
 		<div class="px-2 pb-3 container">
-			
 			<?php if ( $curr->PublicationType != $currentType ) {
 				?>
 				<div class="row font-weight-bold">
