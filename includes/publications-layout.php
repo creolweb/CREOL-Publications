@@ -90,14 +90,12 @@
 							document.getElementById("type").value = urlParams.get("type");
 							document.getElementById("author").value = urlParams.get("author");
 							document.getElementById("search").value = urlParams.get("search");
-							
-							
 						</script>
 						<?php
 					}
 				} else {
 					?> <script> console.log("TEST") <?php
-					publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS, 1);
+					publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS, 1, "");
 				}
 				?>
 			</div>
