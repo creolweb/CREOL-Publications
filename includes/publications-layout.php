@@ -187,13 +187,13 @@ function publications_display( $year, $type, $author, $page, $search ) {
 					</span>
 					<?= $curr->Reference ?>
 					<?php if (isset($curr->PDFLink) && $curr->PDFLink != '') : ?>
-						<a href="<?= $curr->PDFLink ?>" target="_blank"><i class="fa-solid fa-file-pdf"></i></a>
+						<a href="<?= $curr->PDFLink ?>" target="_blank"><i class="fa fa-file-pdf-o"></i></a>
 					<?php endif; ?>
 					<?php if (isset($curr->Link) && $curr->Link != '') : ?>
-						<a href="<?= $curr->Link ?>" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+						<a href="<?= $curr->Link ?>" target="_blank"><i class="fa fa-external-link"></i></a>
 					<?php endif; ?>
 					<?php if (isset($curr->DOI) && $curr->DOI != '' && isset($curr->DOIVisble)) : ?>
-						<a href="<?= $curr->DOI ?>" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+						<a href="<?= $curr->DOI ?>" target="_blank"><i class="fa fa-external-link"></i></a>
 					<?php endif; ?>
 				</div>
 			</div>
