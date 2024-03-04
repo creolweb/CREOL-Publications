@@ -12,59 +12,59 @@
 	ob_start();
 	?>
 
-	<div class="container">
-		<div class="row">
-			<!-- Form -->
-				<form method="get" name="form" class="form-inline">
-					<div class="col-xs-12 col-sm-6 col-md-2 form-group">
-						<select name="yr" id="yr" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
-							<option value=0>Year</option>
-							<?php for ( $i = 0; $i < count( $year_arr ); $i++ ) : ?>
-								<option value="<?= $year_arr[ $i ]->PublicationTxt ?>">
-									<?= $year_arr[ $i ]->PublicationTxt ?>
-								</option>
-							<?php endfor; ?>
-						</select>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-2 form-group">
-						<select name="type" id="type" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
-							<option value=0>Type</option>
-							<?php for ( $i = 0; $i < count( $type_arr ); $i++ ) : ?>
-								<option value="<?= $type_arr[ $i ]->PublicationType ?>">
-									<?= pub_type($type_arr[ $i ]->PublicationType) ?>
-								</option>
-							<?php endfor; ?>
-						</select>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-2 form-group">
-						<select name="author" id="author" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
-							<option value=0>Author</option>
-							<?php for ( $i = 0; $i < count( $author_arr ); $i++ ) : ?>
-								<option value="<?= $author_arr[ $i ]->PeopleID ?>">
-									<?= $author_arr[ $i ]->LastFirstName ?>
-								</option>
-							<?php endfor; ?>
-						</select>
-					</div>
+<div class="container">
+        <div class="row">
+            <!-- Form -->
+            <form method="get" name="form" class="form-inline">
+                <div class="col-xs-12 col-sm-6 col-md-2 form-group">
+                    <select name="pubyr" id="pubyr" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
+                        <option value=0>Year</option>
+                        <?php foreach ($year_arr as $year) : ?>
+                            <option value="<?= $year->PublicationTxt ?>">
+                                <?= $year->PublicationTxt ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-2 form-group">
+                    <select name="pubtype" id="pubtype" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
+                        <option value=0>Type</option>
+                        <?php foreach ($type_arr as $type) : ?>
+                            <option value="<?= $type->PublicationType ?>">
+                                <?= pub_type($type->PublicationType) ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-2 form-group">
+                    <select name="pubauth" id="pubauth" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
+                        <option value=0>Author</option>
+                        <?php foreach ($author_arr as $author) : ?>
+                            <option value="<?= $author->PeopleID ?>">
+                                <?= $author->LastFirstName ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
 
-					<input type="hidden" name="pg" id="pg" value="<?php echo isset($_GET['pg']) ? $_GET['pg'] : 1; ?>">
-					
-					<div class="col-xs-12 col-sm-6 col-md-6 form-group">
-						<div class="input-group" style="width: 100%;">
-							<input type="search" id="search" name="search" class="form-control" placeholder="Search" aria-label="Search">
-							<span class="input-group-btn">
-								<button class="btn btn-primary" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-							</span>
-						</div>
-					</div>
-					<br>
-				</form>
+                <input type="hidden" name="pubpg" id="pubpg" value="<?php echo isset($_GET['pubpg']) ? $_GET['pubpg'] : 1; ?>">
+                
+                <div class="col-xs-12 col-sm-6 col-md-6 form-group">
+                    <div class="input-group" style="width: 100%;">
+                        <input type="search" id="pubsearch" name="pubsearch" class="form-control" placeholder="Search" aria-label="Search">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </span>
+                    </div>
+                </div>
+                <br>
+            </form>
 
-				<script>
+            <script>
 					let form = document.getElementsByName("form")[0];
 					let elements = form.elements;
 					function handleSelectorChange() {
-						document.getElementById('pg').value = 1;
+						document.getElementById('pubpg').value = 1;
 
 						for (let i = 0, len = elements.length; i < len; ++i) {
 							elements[i].style.pointerEvents = "none";
@@ -80,8 +80,8 @@
 
 			<div class="col mt-lg-0 mt-5">
 				<?php
-				if ( isset( $_GET['yr'] ) && isset( $_GET['type'] ) && isset( $_GET['author'] ) ) {
-					if ( $_GET['yr'] == ALL_YEARS && $_GET['type'] == ALL_TYPES && $_GET['author'] == ALL_AUTHORS ) {
+				if ( isset( $_GET['pubyr'] ) && isset( $_GET['pubtype'] ) && isset( $_GET['pubauth'] ) ) {
+					if ( $_GET['pubyr'] == ALL_YEARS && $_GET['pubtype'] == ALL_TYPES && $_GET['pubauth'] == ALL_AUTHORS ) {
 						publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS, $_GET['pg'], $_GET['search']);
 					} else {
 
@@ -89,10 +89,10 @@
 						?>
 						<script>
 							const urlParams = new URLSearchParams(window.location.search);
-							document.getElementById("yr").value = urlParams.get("yr");
-							document.getElementById("type").value = urlParams.get("type");
-							document.getElementById("author").value = urlParams.get("author");
-							document.getElementById("search").value = urlParams.get("search");
+							document.getElementById("pubyr").value = urlParams.get("yr");
+							document.getElementById("pubtype").value = urlParams.get("type");
+							document.getElementById("pubauth").value = urlParams.get("author");
+							document.getElementById("pubsearch").value = urlParams.get("search");
 						</script>
 						<?php
 					}
@@ -108,7 +108,7 @@
 }
 
 function publications_display( $year, $type, $author, $page, $search ) {
-	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $year . '&Type=' . $type . '&Author=' . $author . '&pg=' . $page . '&search=' . $search;
+	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?pubyr=' . $year . '&pubtype=' . $type . '&pubauth=' . $author . '&pubpg=' . $page . '&pubsearch=' . $search;
 	$publication_info_arr = get_json_nocache($url);
 
 	$countUrl = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfoCount?yr=' . $year . '&Type=' . $type . '&Author=' . $author;
