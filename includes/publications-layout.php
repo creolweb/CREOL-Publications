@@ -2,102 +2,127 @@
 /**
  * Handles the form and the output.
  **/
-
  // Handles the dropdown on the left.
  function publications_form_display() {
-    $year_arr = get_json_nocache('https://api.creol.ucf.edu/PublicationsJson.asmx/YearList');
-    $type_arr = get_json_nocache('https://api.creol.ucf.edu/PublicationsJson.asmx/TypeList');
-    $author_arr = get_json_nocache('https://api.creol.ucf.edu/PublicationsJson.asmx/AuthorList');
+	$year_arr = get_json_nocache( 'https://api.creol.ucf.edu/PublicationsJson.asmx/YearList' );
+	$type_arr = get_json_nocache( 'https://api.creol.ucf.edu/PublicationsJson.asmx/TypeList' );
+	$author_arr = get_json_nocache( 'https://api.creol.ucf.edu/PublicationsJson.asmx/AuthorList' );
+	ob_start();
+	?>
+	<div class="container">
+		<div class="row">
+			<!-- Form -->
+				<form method="get" name="form" class="form-inline">
+					<div class="col-xs-12 col-sm-6 col-md-2 form-group">
+						<select name="yr" id="yr" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
+							<option value=0>Year</option>
+							<?php for ( $i = 0; $i < count( $year_arr ); $i++ ) : ?>
+								<option value="<?= $year_arr[ $i ]->PublicationTxt ?>">
+									<?= $year_arr[ $i ]->PublicationTxt ?>
+								</option>
+							<?php endfor; ?>
+						</select>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-2 form-group">
+						<select name="type" id="type" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
+							<option value=0>Type</option>
+							<?php for ( $i = 0; $i < count( $type_arr ); $i++ ) : ?>
+								<option value="<?= $type_arr[ $i ]->PublicationType ?>">
+									<?= pub_type($type_arr[ $i ]->PublicationType) ?>
+								</option>
+							<?php endfor; ?>
+						</select>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-2 form-group">
+						<select name="author" id="author" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
+							<option value=0>Author</option>
+							<?php for ( $i = 0; $i < count( $author_arr ); $i++ ) : ?>
+								<option value="<?= $author_arr[ $i ]->PeopleID ?>">
+									<?= $author_arr[ $i ]->LastFirstName ?>
+								</option>
+							<?php endfor; ?>
 
-    ob_start();
-?>
-<div class="container">
-    <div class="row">
-        <!-- Form -->
-        <form method="get" name="form" class="form-inline">
-            <div class="col-xs-12 col-sm-6 col-md-2 form-group">
-                <select name="pubyr" id="pubyr" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
-                    <option value="0">Year</option>
-                    <?php foreach ($year_arr as $year): ?>
-                    <option value="<?= htmlspecialchars($year->PublicationTxt) ?>">
-                        <?= htmlspecialchars($year->PublicationTxt) ?>
-                    </option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-2 form-group">
-                <select name="pubtype" id="pubtype" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
-                    <option value="0">Type</option>
-                    <?php foreach ($type_arr as $type): ?>
-                    <option value="<?= htmlspecialchars($type->PublicationType) ?>">
-                        <?= pub_type($type->PublicationType) ?>
-                    </option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-2 form-group">
-                <select name="pubauth" id="pubauth" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
-                    <option value="0">Author</option>
-                    <?php foreach ($author_arr as $author): ?>
-                    <option value="<?= htmlspecialchars($author->PeopleID) ?>">
-                        <?= htmlspecialchars($author->LastFirstName) ?>
-                    </option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <input type="hidden" name="pubpg" id="pubpg" value="<?php echo isset($_GET['pubpg']) ? $_GET['pubpg'] : 1; ?>">
-            <div class="col-xs-12 col-sm-6 col-md-6 form-group">
-                <div class="input-group" style="width: 100%;">
-                    <input type="search" id="pubsearch" name="pubsearch" class="form-control" placeholder="Search" aria-label="Search">
-                    <span class="input-group-btn">
-                        <button class="btn btn-primary" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                    </span>
-                </div>
-            </div>
-            <br>
-        </form>
+    
+          
+            
+    
 
-        <script>
-            function handleSelectorChange() {
-                document.getElementById('pubpg').value = 1;
-                document.forms['form'].submit();
-            }
-        </script>
-
-        <div class="col mt-lg-0 mt-5">
-            <?php
-            if (isset($_GET['pubyr'], $_GET['pubtype'], $_GET['pubauth'])) {
-                publications_display($_GET['pubyr'], $_GET['pubtype'], $_GET['pubauth'], $_GET['pubpg'], $_GET['pubsearch']);
-            } else {
-                publications_display('ALL_YEARS', 'ALL_TYPES', 'ALL_AUTHORS', 1, "");
-            }
-            ?>
-        </div>
-    </div>
-</div>
-<?php
-    return ob_get_clean();
+          
+          Expand Down
+    
+    
+  
+						</select>
+					</div>
+					<input type="hidden" name="pg" id="pg" value="<?php echo isset($_GET['pg']) ? $_GET['pg'] : 1; ?>">
+					
+					<div class="col-xs-12 col-sm-6 col-md-6 form-group">
+						<div class="input-group" style="width: 100%;">
+							<input type="search" id="search" name="search" class="form-control" placeholder="Search" aria-label="Search">
+							<span class="input-group-btn">
+								<button class="btn btn-primary" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+							</span>
+						</div>
+					</div>
+					<br>
+				</form>
+				<script>
+					let form = document.getElementsByName("form")[0];
+					let elements = form.elements;
+					function handleSelectorChange() {
+						document.getElementById('pg').value = 1;
+						for (let i = 0, len = elements.length; i < len; ++i) {
+							elements[i].style.pointerEvents = "none";
+							elements[i].onclick = () => false;
+							elements[i].onkeydown = () => false;
+							elements[i].style.backgroundColor = "#f0f0f0";
+			            	elements[i].style.color = "#6c757d";
+			            	elements[i].style.border = "1px solid #ced4da";
+						}
+						form.submit();
+					}
+				</script>
+			<div class="col mt-lg-0 mt-5">
+				<?php
+				if ( isset( $_GET['yr'] ) && isset( $_GET['type'] ) && isset( $_GET['author'] ) ) {
+					if ( $_GET['yr'] == ALL_YEARS && $_GET['type'] == ALL_TYPES && $_GET['author'] == ALL_AUTHORS ) {
+						publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS, $_GET['pg'], $_GET['search']);
+					} else {
+						publications_display($_GET['yr'], $_GET['type'], $_GET['author'], $_GET['pg'], $_GET['search']);
+						?>
+						<script>
+							const urlParams = new URLSearchParams(window.location.search);
+							document.getElementById("yr").value = urlParams.get("yr");
+							document.getElementById("type").value = urlParams.get("type");
+							document.getElementById("author").value = urlParams.get("author");
+							document.getElementById("search").value = urlParams.get("search");
+						</script>
+						<?php
+					}
+				} else {
+					publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS, 1, "");
+				}
+				?>
+			</div>
+		</div>
+	</div>
+	<?php
+	return ob_get_clean();
 }
-
 function publications_display( $year, $type, $author, $page, $search ) {
-	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?pubyr=' . $year . '&pubtype=' . $type . '&pubauth=' . $author . '&pubpg=' . $page . '&pubsearch=' . $search;
+	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $year . '&Type=' . $type . '&Author=' . $author . '&pg=' . $page . '&search=' . $search;
 	$publication_info_arr = get_json_nocache($url);
-
 	$countUrl = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfoCount?yr=' . $year . '&Type=' . $type . '&Author=' . $author;
 	$total_publications = get_plain_text($countUrl);
-
 	error_log(json_encode($publication_info_arr));
-
 	$pageSize = 20;
     $totalPages = ceil($total_publications / $pageSize);
 	?>
-
 	<br>
 	<div class="row float-right">
 		Found <?= $total_publications ?> publications.
 	</div>
 	<br>
-
 	<?php
 	$range = 3;
 	echo '<div class="text-right">';
@@ -109,7 +134,6 @@ function publications_display( $year, $type, $author, $page, $search ) {
 		echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=1">First</span> ';
         echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '"><i class="fa fa-caret-left" aria-hidden="true"></i></span> ';
 	}
-
     for ($x = ($page - $range); $x < (($page + $range) + 1); $x++) {
         if (($x > 0) && ($x <= $totalPages)) {
             if ($x == $page) {
@@ -119,7 +143,6 @@ function publications_display( $year, $type, $author, $page, $search ) {
             }
         }
     }
-
     if ($page < $totalPages) {
         echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '"><i class="fa fa-caret-right" aria-hidden="true"></i></a> ';
         echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $totalPages . '">Last</a>';
@@ -128,7 +151,6 @@ function publications_display( $year, $type, $author, $page, $search ) {
 		echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '"><i class="fa fa-caret-right" aria-hidden="true"></i></span> ';
         echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $totalPages . '">Last</span>';
 	}
-
     echo '</div>';
 	?>
 	<script>
@@ -186,7 +208,6 @@ function publications_display( $year, $type, $author, $page, $search ) {
 		echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=1">First</span> ';
 		echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '"><i class="fa fa-caret-left" aria-hidden="true"></i></span> ';
 	}
-
 	for ($x = ($page - $range); $x < (($page + $range) + 1); $x++) {
 		if (($x > 0) && ($x <= $totalPages)) {
 			if ($x == $page) {
@@ -196,7 +217,6 @@ function publications_display( $year, $type, $author, $page, $search ) {
 			}
 		}
 	}
-
 	if ($page < $totalPages) {
 		echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '"><i class="fa fa-caret-right" aria-hidden="true"></i></a> ';
 		echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $totalPages . '">Last</a>';
@@ -205,7 +225,6 @@ function publications_display( $year, $type, $author, $page, $search ) {
 		echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '"><i class="fa fa-caret-right" aria-hidden="true"></i></span> ';
 		echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $totalPages . '">Last</span>';
 	}
-
 	echo '</div>';
 	echo '<br>';
 	echo '<br>';
