@@ -40,7 +40,7 @@
 						<select name="author" id="author" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
 							<option value=0>Author</option>
 							<?php for ( $i = 0; $i < count( $author_arr ); $i++ ) : ?>
-								<option value="<?= $author_arr[ $i ]->UcfID ?>">
+								<option value="<?= $author_arr[ $i ]->PeopleID ?>">
 									<?= $author_arr[ $i ]->LastFirstName ?>
 								</option>
 							<?php endfor; ?>
