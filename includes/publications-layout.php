@@ -64,6 +64,8 @@
 					let form = document.getElementsByName("form")[0];
 					let elements = form.elements;
 					function handleSelectorChange() {
+						document.getElementById('pg').value = 1;
+
 						for (let i = 0, len = elements.length; i < len; ++i) {
 							elements[i].style.pointerEvents = "none";
 							elements[i].onclick = () => false;
@@ -82,7 +84,8 @@
 					if ( $_GET['yr'] == ALL_YEARS && $_GET['type'] == ALL_TYPES && $_GET['author'] == ALL_AUTHORS ) {
 						publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS, $_GET['pg'], "");
 					} else {
-						publications_display($_GET['yr'], $_GET['type'], $_GET['author'], 1, $_GET['search']);
+
+						publications_display($_GET['yr'], $_GET['type'], $_GET['author'], $_GET['pg'], $_GET['search']);
 						?>
 						<script>
 							const urlParams = new URLSearchParams(window.location.search);
