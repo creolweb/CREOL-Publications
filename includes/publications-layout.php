@@ -110,7 +110,7 @@
 	return ob_get_clean();
 }
 function publications_display( $year, $type, $author, $page, $search ) {
-	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?yr=' . $year . '&Type=' . $type . '&Author=' . $author . '&pg=' . $page . '&search=' . $search;
+	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?pubyr=' . $year . '&pubType=' . $type . '&pubAuth=' . $author . '&pubpg=' . $page . '&pubsearch=' . $search;
 	$publication_info_arr = get_json_nocache($url);
 	$countUrl = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfoCount?yr=' . $year . '&Type=' . $type . '&Author=' . $author;
 	$total_publications = get_plain_text($countUrl);
