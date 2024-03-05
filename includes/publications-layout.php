@@ -2,19 +2,22 @@
 /**
  * Handles the form and the output.
  **/
+
  // Handles the dropdown on the left.
  function publications_form_display() {
 	$year_arr = get_json_nocache( 'https://api.creol.ucf.edu/PublicationsJson.asmx/YearList' );
 	$type_arr = get_json_nocache( 'https://api.creol.ucf.edu/PublicationsJson.asmx/TypeList' );
 	$author_arr = get_json_nocache( 'https://api.creol.ucf.edu/PublicationsJson.asmx/AuthorList' );
+
 	ob_start();
 	?>
+
 	<div class="container">
 		<div class="row">
 			<!-- Form -->
 				<form method="get" name="form" class="form-inline">
 					<div class="col-xs-12 col-sm-6 col-md-2 form-group">
-						<select name="yr" id="yr" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
+						<select name="pubyr" id="pubyr" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
 							<option value=0>Year</option>
 							<?php for ( $i = 0; $i < count( $year_arr ); $i++ ) : ?>
 								<option value="<?= $year_arr[ $i ]->PublicationTxt ?>">
@@ -41,19 +44,9 @@
 									<?= $author_arr[ $i ]->LastFirstName ?>
 								</option>
 							<?php endfor; ?>
-
-    
-          
-            
-    
-
-          
-          Expand Down
-    
-    
-  
 						</select>
 					</div>
+
 					<input type="hidden" name="pg" id="pg" value="<?php echo isset($_GET['pg']) ? $_GET['pg'] : 1; ?>">
 					
 					<div class="col-xs-12 col-sm-6 col-md-6 form-group">
@@ -66,11 +59,13 @@
 					</div>
 					<br>
 				</form>
+
 				<script>
 					let form = document.getElementsByName("form")[0];
 					let elements = form.elements;
 					function handleSelectorChange() {
 						document.getElementById('pg').value = 1;
+
 						for (let i = 0, len = elements.length; i < len; ++i) {
 							elements[i].style.pointerEvents = "none";
 							elements[i].onclick = () => false;
@@ -82,17 +77,19 @@
 						form.submit();
 					}
 				</script>
+
 			<div class="col mt-lg-0 mt-5">
 				<?php
-				if ( isset( $_GET['yr'] ) && isset( $_GET['type'] ) && isset( $_GET['author'] ) ) {
-					if ( $_GET['yr'] == ALL_YEARS && $_GET['type'] == ALL_TYPES && $_GET['author'] == ALL_AUTHORS ) {
+				if ( isset( $_GET['pubyr'] ) && isset( $_GET['type'] ) && isset( $_GET['author'] ) ) {
+					if ( $_GET['pubyr'] == ALL_YEARS && $_GET['type'] == ALL_TYPES && $_GET['author'] == ALL_AUTHORS ) {
 						publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS, $_GET['pg'], $_GET['search']);
 					} else {
-						publications_display($_GET['yr'], $_GET['type'], $_GET['author'], $_GET['pg'], $_GET['search']);
+
+						publications_display($_GET['pubyr'], $_GET['type'], $_GET['author'], $_GET['pg'], $_GET['search']);
 						?>
 						<script>
 							const urlParams = new URLSearchParams(window.location.search);
-							document.getElementById("yr").value = urlParams.get("yr");
+							document.getElementById("pubyr").value = urlParams.get("pubyr");
 							document.getElementById("type").value = urlParams.get("type");
 							document.getElementById("author").value = urlParams.get("author");
 							document.getElementById("search").value = urlParams.get("search");
@@ -109,48 +106,57 @@
 	<?php
 	return ob_get_clean();
 }
+
 function publications_display( $year, $type, $author, $page, $search ) {
-	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?pubyr=' . $year . '&pubType=' . $type . '&pubAuth=' . $author . '&pubpg=' . $page . '&pubsearch=' . $search;
+	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?pubyr=' . $year . '&Type=' . $type . '&Author=' . $author . '&pg=' . $page . '&search=' . $search;
 	$publication_info_arr = get_json_nocache($url);
-	$countUrl = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfoCount?yr=' . $year . '&Type=' . $type . '&Author=' . $author;
+
+	$countUrl = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfoCount?pubyr=' . $year . '&Type=' . $type . '&Author=' . $author;
 	$total_publications = get_plain_text($countUrl);
+
 	error_log(json_encode($publication_info_arr));
+
 	$pageSize = 20;
     $totalPages = ceil($total_publications / $pageSize);
 	?>
+
 	<br>
 	<div class="row float-right">
 		Found <?= $total_publications ?> publications.
 	</div>
 	<br>
+
 	<?php
 	$range = 3;
 	echo '<div class="text-right">';
     if ($page > 1) {		
-        echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=1">First</a> ';
-        echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '"><i class="fa fa-caret-left" aria-hidden="true"></i></a> ';
+        echo '<a href="?pubyr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=1">First</a> ';
+        echo '<a href="?pubyr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '"><i class="fa fa-caret-left" aria-hidden="true"></i></a> ';
     }
 	else {
-		echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=1">First</span> ';
-        echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '"><i class="fa fa-caret-left" aria-hidden="true"></i></span> ';
+		echo '<span href="?pubyr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=1">First</span> ';
+        echo '<span href="?pubyr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '"><i class="fa fa-caret-left" aria-hidden="true"></i></span> ';
 	}
+
     for ($x = ($page - $range); $x < (($page + $range) + 1); $x++) {
         if (($x > 0) && ($x <= $totalPages)) {
             if ($x == $page) {
                 echo '<strong>' . $x . '</strong> ';
             } else {
-                echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $x . '">' . $x .'</a> '; 
+                echo '<a href="?pubyr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $x . '">' . $x .'</a> '; 
             }
         }
     }
+
     if ($page < $totalPages) {
-        echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '"><i class="fa fa-caret-right" aria-hidden="true"></i></a> ';
-        echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $totalPages . '">Last</a>';
+        echo '<a href="?pubyr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '"><i class="fa fa-caret-right" aria-hidden="true"></i></a> ';
+        echo '<a href="?pubyr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $totalPages . '">Last</a>';
     }
 	else {
-		echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '"><i class="fa fa-caret-right" aria-hidden="true"></i></span> ';
-        echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $totalPages . '">Last</span>';
+		echo '<span href="?pubyr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '"><i class="fa fa-caret-right" aria-hidden="true"></i></span> ';
+        echo '<span href="?pubyr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $totalPages . '">Last</span>';
 	}
+
     echo '</div>';
 	?>
 	<script>
@@ -201,30 +207,33 @@ function publications_display( $year, $type, $author, $page, $search ) {
 	$range = 3;
 	echo '<div class="text-right">';
 	if ($page > 1) {		
-		echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=1">First</a> ';
-		echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '"><i class="fa fa-caret-left" aria-hidden="true"></i></a> ';
+		echo '<a href="?pubyr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=1">First</a> ';
+		echo '<a href="?pubyr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '"><i class="fa fa-caret-left" aria-hidden="true"></i></a> ';
 	}
 	else {
-		echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=1">First</span> ';
-		echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '"><i class="fa fa-caret-left" aria-hidden="true"></i></span> ';
+		echo '<span href="?pubyr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=1">First</span> ';
+		echo '<span href="?pubyr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '"><i class="fa fa-caret-left" aria-hidden="true"></i></span> ';
 	}
+
 	for ($x = ($page - $range); $x < (($page + $range) + 1); $x++) {
 		if (($x > 0) && ($x <= $totalPages)) {
 			if ($x == $page) {
 				echo '<strong>' . $x . '</strong> ';
 			} else {
-				echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $x . '">' . $x .'</a> '; 
+				echo '<a href="?pubyr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $x . '">' . $x .'</a> '; 
 			}
 		}
 	}
+
 	if ($page < $totalPages) {
-		echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '"><i class="fa fa-caret-right" aria-hidden="true"></i></a> ';
-		echo '<a href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $totalPages . '">Last</a>';
+		echo '<a href="?pubyr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '"><i class="fa fa-caret-right" aria-hidden="true"></i></a> ';
+		echo '<a href="?pubyr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $totalPages . '">Last</a>';
 	}
 	else {
-		echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '"><i class="fa fa-caret-right" aria-hidden="true"></i></span> ';
-		echo '<span href="?yr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $totalPages . '">Last</span>';
+		echo '<span href="?pubyr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '"><i class="fa fa-caret-right" aria-hidden="true"></i></span> ';
+		echo '<span href="?pubyr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $totalPages . '">Last</span>';
 	}
+
 	echo '</div>';
 	echo '<br>';
 	echo '<br>';
