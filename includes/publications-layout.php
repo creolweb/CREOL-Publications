@@ -18,7 +18,7 @@
 				<form method="get" name="form" class="form-inline">
 					<div class="col-xs-12 col-sm-6 col-md-2 form-group">
 						<select name="pubyr" id="pubyr" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
-							<option value=0>Years</option>
+							<option value=0>Year</option>
 							<?php for ( $i = 0; $i < count( $year_arr ); $i++ ) : ?>
 								<option value="<?= $year_arr[ $i ]->PublicationTxt ?>">
 									<?= $year_arr[ $i ]->PublicationTxt ?>
@@ -108,7 +108,7 @@
 }
 
 function publications_display( $year, $type, $author, $page, $search ) {
-	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?pubyr=' . $year . '&Type=' . $type . '&Author=' . $author . '&pg=' . $page . '&search=' . $search;
+	$url = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfo?pubyr=' . $year . '&pubType=' . $type . '&pubAuth=' . $author . '&pg=' . $page . '&pubsearch=' . $search;
 	$publication_info_arr = get_json_nocache($url);
 
 	$countUrl = 'https://api.creol.ucf.edu/PublicationsJson.asmx/PublicationInfoCount?pubyr=' . $year . '&Type=' . $type . '&Author=' . $author;
