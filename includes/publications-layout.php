@@ -90,8 +90,8 @@
 			<div class="col mt-lg-0 mt-5">
 				<?php
 				if ( isset( $_GET['pubyr'] ) && isset( $_GET['type'] ) && isset( $_GET['pubAuth'] ) ) {
-					if ( $_GET['pubyr'] == ALL_YEARS && $_GET['type'] == ALL_TYPES && $_GET['pubAuth'] == ALL_pubAuthS ) {
-						publications_display(ALL_YEARS, ALL_TYPES, ALL_pubAuthS, $_GET['pg'], $_GET['search']);
+					if ( $_GET['pubyr'] == ALL_YEARS && $_GET['type'] == ALL_TYPES && $_GET['pubAuth'] == ALL_AUTHORS ) {
+						publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS, $_GET['pg'], $_GET['search']);
 					} else {
 
 						publications_display($_GET['pubyr'], $_GET['type'], $_GET['pubAuth'], $_GET['pg'], $_GET['search']);
@@ -106,7 +106,7 @@
 						<?php
 					}
 				} else {
-					publications_display(ALL_YEARS, ALL_TYPES, ALL_pubAuthS, 1, "");
+					publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS, 1, "");
 				}
 				?>
 			</div>
