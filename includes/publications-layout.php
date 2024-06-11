@@ -103,16 +103,15 @@
 				}
 
 				if( $isDefault) {
-				publications_display($pubyr, $type, 4531, $page, $search);
-				?>
-				<script>
-				document.getElementById("pubAuth").value = 4531;
-				</script>
-				<?php
+					publications_display($pubyr, $type, 4531, $page, $search);
+					?>
+					<script>
+						document.getElementById("pubAuth").value = 4531;
+					</script>
+					<?php
 				}
-				else
+				else {
 				publications_display($pubyr, $type, $pubAuth, $page, $search);
-				
 				?>
 				<script>
 					const urlParams = new URLSearchParams(window.location.search);
@@ -121,6 +120,10 @@
 					document.getElementById("pubAuth").value = urlParams.get("pubAuth") || "<?= ALL_AUTHORS ?>";
 					document.getElementById("search").value = urlParams.get("search") || "";
 				</script>
+				<?php
+				}
+				?>
+				
 			</div>
 		</div>
 	</div>
