@@ -89,32 +89,23 @@
 
 			<div class="col mt-lg-0 mt-5">
 				<?php
-				if ( isset( $_GET['pubyr'] ) && isset( $_GET['type'] ) && isset( $_GET['pubAuth'] ) ) {
-					if ( $_GET['pubyr'] == ALL_YEARS && $_GET['type'] == ALL_TYPES && $_GET['pubAuth'] == ALL_AUTHORS ) {
-						publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS, $_GET['pg'], $_GET['search']);
-					} else {
 
-						publications_display($_GET['pubyr'], $_GET['type'], $_GET['pubAuth'], $_GET['pg'], $_GET['search']);
-						?>
-						<script>
-							const urlParams = new URLSearchParams(window.location.search);
-							document.getElementById("pubyr").value = urlParams.get("pubyr");
-							document.getElementById("type").value = urlParams.get("type");
-							document.getElementById("pubAuth").value = urlParams.get("pubAuth");
-							document.getElementById("search").value = urlParams.get("search");
-						</script>
-						<?php
-					}
-				} else {
-					publications_display(ALL_YEARS, ALL_TYPES, 4531, 1, "");
-					?>
-					<script>
-						const urlParams = new URLSearchParams(window.location.search);
-						document.getElementById("pubAuth").value = 4531;
-					</script>
-					<?php
-				}
+				$pubyr = isset($_GET['pubyr']) ? $_GET['pubyr'] : ALL_YEARS;
+				$type = isset($_GET['type']) ? $_GET['type'] : ALL_TYPES;
+				$pubAuth = isset($_GET['pubAuth']) ? $_GET['pubAuth'] : ALL_AUTHORS;
+				$page = isset($_GET['pg']) ? $_GET['pg'] : 1;
+				$search = isset($_GET['search']) ? $_GET['search'] : "";
+
+				publications_display($pubyr, $type, $pubAuth, $page, $search);
+				
 				?>
+				<script>
+					const urlParams = new URLSearchParams(window.location.search);
+					document.getElementById("pubyr").value = urlParams.get("pubyr") || "<?= ALL_YEARS ?>";
+					document.getElementById("type").value = urlParams.get("type") || "<?= ALL_TYPES ?>";
+					document.getElementById("pubAuth").value = urlParams.get("pubAuth") || "<?= ALL_AUTHORS ?>";
+					document.getElementById("search").value = urlParams.get("search") || "";
+				</script>
 			</div>
 		</div>
 	</div>
