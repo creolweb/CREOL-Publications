@@ -47,7 +47,7 @@
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-2 form-group">
 						<select name="author" id="author" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
-							<option value="0" ><?= $wporg_atts['author'] ?></option>
+							<option value="<?= empty($wporg_atts['author']) ? 'selected' : '0'; ?>" >Author</option>
 							<?php for ( $i = 0; $i < count( $author_arr ); $i++ ) : ?>
 								<option value="<?= $author_arr[ $i ]->PeopleID ?>">
 									<?= $author_arr[ $i ]->LastFirstName ?>
