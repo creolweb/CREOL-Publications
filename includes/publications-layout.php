@@ -107,6 +107,12 @@
 					}
 				} else {
 					publications_display(ALL_YEARS, ALL_TYPES, 4531, 1, "");
+					?>
+					<script>
+						const urlParams = new URLSearchParams(window.location.search);
+						document.getElementById("pubAuth").value = 4531;
+					</script>
+					<?php
 				}
 				?>
 			</div>
