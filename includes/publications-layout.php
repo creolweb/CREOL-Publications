@@ -102,8 +102,14 @@
 					$isDefault = false;
 				}
 
-				if( $isDefault)
+				if( $isDefault) {
 				publications_display($pubyr, $type, 4531, $page, $search);
+				?>
+				<script>
+				document.getElementById("pubAuth").value = 4531;
+				</script>
+				<?php
+				}
 				else
 				publications_display($pubyr, $type, $pubAuth, $page, $search);
 				
