@@ -27,7 +27,7 @@
 				<form method="get" name="form" class="form-inline">
 					<div class="col-xs-12 col-sm-6 col-md-2 form-group">
 						<select name="pubyr" id="pubyr" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
-							<option value=0>Year</option>
+							<option value=2020>Year</option>
 							<?php for ( $i = 0; $i < count( $year_arr ); $i++ ) : ?>
 								<option value="<?= $year_arr[ $i ]->PublicationTxt ?>">
 									<?= $year_arr[ $i ]->PublicationTxt ?>
@@ -37,7 +37,7 @@
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-2 form-group">
 						<select name="type" id="type" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
-							<option value=1>Type</option>
+							<option value=2>Type</option>
 							<?php for ( $i = 0; $i < count( $type_arr ); $i++ ) : ?>
 								<option value="<?= $type_arr[ $i ]->PublicationType ?>">
 									<?= pub_type($type_arr[ $i ]->PublicationType) ?>
