@@ -106,11 +106,7 @@
 						<?php
 					}
 				} else {
-					if( ! empty($wporg_atts['author'])){
-						publications_display(ALL_YEARS, ALL_TYPES, $wporg_atts['author'], 1, "");
-					} else {
-						publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS, 1, "");
-					}
+					publications_display(ALL_YEARS, ALL_TYPES, 4531, 1, "");
 				}
 				?>
 			</div>
