@@ -4,7 +4,16 @@
  **/
 
  // Handles the dropdown on the left.
- function publications_form_display() {
+ function publications_form_display( $atts = [], $content = null, $tag = '' ) {
+
+	$atts = array_change_key_case( (array) $atts, CASE_LOWER );
+
+    $wporg_atts = shortcode_atts(
+        array(
+            'auth'  => '',
+        ), $atts, $tag
+    );
+
 	$year_arr = get_json_nocache( 'https://api.creol.ucf.edu/PublicationsJson.asmx/YearList' );
 	$type_arr = get_json_nocache( 'https://api.creol.ucf.edu/PublicationsJson.asmx/TypeList' );
 	$author_arr = get_json_nocache( 'https://api.creol.ucf.edu/PublicationsJson.asmx/AuthorList' );
@@ -38,7 +47,7 @@
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-2 form-group">
 						<select name="author" id="author" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
-							<option value=0>Author</option>
+							<option value="0" <?= empty($wporg_atts['author']) ? 'selected' : ''; ?>>Author</option>
 							<?php for ( $i = 0; $i < count( $author_arr ); $i++ ) : ?>
 								<option value="<?= $author_arr[ $i ]->PeopleID ?>">
 									<?= $author_arr[ $i ]->LastFirstName ?>
