@@ -47,7 +47,7 @@
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-2 form-group">
 						<select name="pubAuth" id="pubAuth" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
-							<option value="0">Author</option>
+							<option value="4531">Author</option>
 							<?php for ( $i = 0; $i < count( $pubAuth_arr ); $i++ ) : ?>
 								<option value="<?= $pubAuth_arr[ $i ]->PeopleID ?>">
 									<?= $pubAuth_arr[ $i ]->LastFirstName ?>
@@ -91,7 +91,7 @@
 				<?php
 				if ( isset( $_GET['pubyr'] ) && isset( $_GET['type'] ) && isset( $_GET['pubAuth'] ) ) {
 					if ( $_GET['pubyr'] == ALL_YEARS && $_GET['type'] == ALL_TYPES && $_GET['pubAuth'] == ALL_AUTHORS ) {
-						publications_display(2020, ALL_TYPES, ALL_AUTHORS, $_GET['pg'], $_GET['search']);
+						publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS, $_GET['pg'], $_GET['search']);
 					} else {
 
 						publications_display($_GET['pubyr'], $_GET['type'], $_GET['pubAuth'], $_GET['pg'], $_GET['search']);
