@@ -10,7 +10,7 @@
 
     $wporg_atts = shortcode_atts(
         array(
-            'author'  => '',
+            'auth'  => '',
         ), $atts, $tag
     );
 
@@ -47,7 +47,7 @@
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-2 form-group">
 						<select name="author" id="author" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
-							<option value="4531" >Author</option>
+							<option value="0">Author</option>
 							<?php for ( $i = 0; $i < count( $author_arr ); $i++ ) : ?>
 								<option value="<?= $author_arr[ $i ]->PeopleID ?>">
 									<?= $author_arr[ $i ]->LastFirstName ?>
@@ -139,12 +139,12 @@ function publications_display( $year, $type, $author, $page, $search ) {
 	$range = 3;
 	echo '<div class="text-right">';
     if ($page > 1) {		
-        echo '<a href="?pubyr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=1">First</a> ';
-        echo '<a href="?pubyr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '"><i class="fa fa-caret-left" aria-hidden="true"></i></a> ';
+        echo '<a href="?pubyr=' . $year . '&type=' . $type . '&pubAuth=' . $author . '&pg=1">First</a> ';
+        echo '<a href="?pubyr=' . $year . '&type=' . $type . '&pubAuth=' . $author . '&pg=' . ($page - 1) . '"><i class="fa fa-caret-left" aria-hidden="true"></i></a> ';
     }
 	else {
-		echo '<span href="?pubyr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=1">First</span> ';
-        echo '<span href="?pubyr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page - 1) . '"><i class="fa fa-caret-left" aria-hidden="true"></i></span> ';
+		echo '<span href="?pubyr=' . $year . '&type=' . $type . '&pubAuth=' . $author . '&pg=1">First</span> ';
+        echo '<span href="?pubyr=' . $year . '&type=' . $type . '&pubAuth=' . $author . '&pg=' . ($page - 1) . '"><i class="fa fa-caret-left" aria-hidden="true"></i></span> ';
 	}
 
     for ($x = ($page - $range); $x < (($page + $range) + 1); $x++) {
@@ -152,18 +152,18 @@ function publications_display( $year, $type, $author, $page, $search ) {
             if ($x == $page) {
                 echo '<strong>' . $x . '</strong> ';
             } else {
-                echo '<a href="?pubyr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $x . '">' . $x .'</a> '; 
+                echo '<a href="?pubyr=' . $year . '&type=' . $type . '&pubAuth=' . $author . '&pg=' . $x . '">' . $x .'</a> '; 
             }
         }
     }
 
     if ($page < $totalPages) {
-        echo '<a href="?pubyr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '"><i class="fa fa-caret-right" aria-hidden="true"></i></a> ';
-        echo '<a href="?pubyr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $totalPages . '">Last</a>';
+        echo '<a href="?pubyr=' . $year . '&type=' . $type . '&pubAuth=' . $author . '&pg=' . ($page + 1) . '"><i class="fa fa-caret-right" aria-hidden="true"></i></a> ';
+        echo '<a href="?pubyr=' . $year . '&type=' . $type . '&pubAuth=' . $author . '&pg=' . $totalPages . '">Last</a>';
     }
 	else {
-		echo '<span href="?pubyr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . ($page + 1) . '"><i class="fa fa-caret-right" aria-hidden="true"></i></span> ';
-        echo '<span href="?pubyr=' . $year . '&type=' . $type . '&author=' . $author . '&pg=' . $totalPages . '">Last</span>';
+		echo '<span href="?pubyr=' . $year . '&type=' . $type . '&pubAuth=' . $author . '&pg=' . ($page + 1) . '"><i class="fa fa-caret-right" aria-hidden="true"></i></span> ';
+        echo '<span href="?pubyr=' . $year . '&type=' . $type . '&pubAuth=' . $author . '&pg=' . $totalPages . '">Last</span>';
 	}
 
     echo '</div>';
