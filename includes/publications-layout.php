@@ -27,7 +27,7 @@
 				<form method="get" name="form" class="form-inline">
 					<div class="col-xs-12 col-sm-6 col-md-2 form-group">
 						<select name="pubyr" id="pubyr" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
-							<option value=2020>Year</option>
+							<option value=0>Year</option>
 							<?php for ( $i = 0; $i < count( $year_arr ); $i++ ) : ?>
 								<option value="<?= $year_arr[ $i ]->PublicationTxt ?>">
 									<?= $year_arr[ $i ]->PublicationTxt ?>
@@ -37,7 +37,7 @@
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-2 form-group">
 						<select name="type" id="type" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
-							<option value=2>Type</option>
+							<option value=0>Type</option>
 							<?php for ( $i = 0; $i < count( $type_arr ); $i++ ) : ?>
 								<option value="<?= $type_arr[ $i ]->PublicationType ?>">
 									<?= pub_type($type_arr[ $i ]->PublicationType) ?>
@@ -47,7 +47,7 @@
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-2 form-group">
 						<select name="pubAuth" id="pubAuth" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
-							<option value="1">Author</option>
+							<option value="0">Author</option>
 							<?php for ( $i = 0; $i < count( $pubAuth_arr ); $i++ ) : ?>
 								<option value="<?= $pubAuth_arr[ $i ]->PeopleID ?>">
 									<?= $pubAuth_arr[ $i ]->LastFirstName ?>
@@ -91,7 +91,7 @@
 				<?php
 				if ( isset( $_GET['pubyr'] ) && isset( $_GET['type'] ) && isset( $_GET['pubAuth'] ) ) {
 					if ( $_GET['pubyr'] == ALL_YEARS && $_GET['type'] == ALL_TYPES && $_GET['pubAuth'] == ALL_AUTHORS ) {
-						publications_display(ALL_YEARS, ALL_TYPES, ALL_AUTHORS, $_GET['pg'], $_GET['search']);
+						publications_display(2020, ALL_TYPES, ALL_AUTHORS, $_GET['pg'], $_GET['search']);
 					} else {
 
 						publications_display($_GET['pubyr'], $_GET['type'], $_GET['pubAuth'], $_GET['pg'], $_GET['search']);
