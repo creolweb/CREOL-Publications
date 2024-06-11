@@ -46,10 +46,10 @@
 						</select>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-2 form-group">
-						<select name="pubAuth" id="pubAuth" class="form-control" onchange="handleSelectorChange()" style="width: 100%;" value="14424">
+						<select name="pubAuth" id="pubAuth" class="form-control" onchange="handleSelectorChange()" style="width: 100%;">
 							<option value="0">Author</option>
 							<?php for ( $i = 0; $i < count( $pubAuth_arr ); $i++ ) : ?>
-								<option value="<?= $pubAuth_arr[ $i ]->PeopleID ?>">
+								<option value="<?= $pubAuth_arr[ $i ]->PeopleID ?>" <?= ($wporg_atts['author'] == $pubAuth_arr[$i]->PeopleID) ? 'selected' : '' ?>>
 									<?= $pubAuth_arr[ $i ]->LastFirstName ?>
 								</option>
 							<?php endfor; ?>
