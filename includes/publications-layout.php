@@ -141,7 +141,8 @@ function publications_display( $year, $type, $pubAuth, $page, $search ) {
 	error_log(json_encode($publication_info_arr));
 
 	$pageSize = 20;
-    $totalPages = ceil($total_publications / $pageSize);
+	if($total_publications == 0 || is_null($total_publications)) $totalPages = 0;
+    else $totalPages = ceil($total_publications / $pageSize);
 	?>
 
 	<br>
