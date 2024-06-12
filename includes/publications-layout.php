@@ -108,7 +108,7 @@
 					publications_display($pubyr, $type, $authorToUse, $page, $search);
 					?>
 					<script>
-						document.getElementById("pubAuth").value = $wporg_atts['auth'];
+						document.getElementById("pubAuth").value = $authorToUse;
 					</script>
 					<?php
 				}
