@@ -108,7 +108,7 @@
 					publications_display($pubyr, $type, $authorToUse, $page, $search);
 					?>
 					<script>
-						document.getElementById("pubAuth").value = <?php $authorToUse ?>;
+						document.getElementById("pubAuth").value = <?php echo $authorToUse ?>;
 					</script>
 					<?php
 				}
