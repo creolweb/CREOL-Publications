@@ -103,24 +103,26 @@
 				}
 
 				if( $isDefault) {
-					publications_display($pubyr, $type, 4531, $page, $search);
+					$authorToUse = $isDefault && !empty($wporg_atts['auth']) ? $wporg_atts['auth'] : $pubAuth;
+
+					publications_display($pubyr, $type, $authorToUse, $page, $search);
 					?>
 					<script>
-						document.getElementById("pubAuth").value = 4531;
+						document.getElementById("pubAuth").value = $wporg_atts['auth'];
 					</script>
 					<?php
 				}
 				else {
-				publications_display($pubyr, $type, $pubAuth, $page, $search);
-				?>
-				<script>
-					const urlParams = new URLSearchParams(window.location.search);
-					document.getElementById("pubyr").value = urlParams.get("pubyr") || "<?= ALL_YEARS ?>";
-					document.getElementById("type").value = urlParams.get("type") || "<?= ALL_TYPES ?>";
-					document.getElementById("pubAuth").value = urlParams.get("pubAuth") || "<?= ALL_AUTHORS ?>";
-					document.getElementById("search").value = urlParams.get("search") || "";
-				</script>
-				<?php
+					publications_display($pubyr, $type, $pubAuth, $page, $search);
+					?>
+					<script>
+						const urlParams = new URLSearchParams(window.location.search);
+						document.getElementById("pubyr").value = urlParams.get("pubyr") || "<?= ALL_YEARS ?>";
+						document.getElementById("type").value = urlParams.get("type") || "<?= ALL_TYPES ?>";
+						document.getElementById("pubAuth").value = urlParams.get("pubAuth") || "<?= ALL_AUTHORS ?>";
+						document.getElementById("search").value = urlParams.get("search") || "";
+					</script>
+					<?php
 				}
 				?>
 				
@@ -141,7 +143,7 @@ function publications_display( $year, $type, $pubAuth, $page, $search ) {
 	error_log(json_encode($publication_info_arr));
 
 	$pageSize = 20;
-	if($total_publications == 0 || is_null($total_publications)) $totalPages = 0;
+	if($total_publications == 0 || is_null($total_publications)) $totalPages = 1;
     else $totalPages = ceil($total_publications / $pageSize);
 	?>
 
