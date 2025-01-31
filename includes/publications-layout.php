@@ -222,7 +222,7 @@ function publications_display( $year, $type, $pubAuth, $page, $search ) {
 					</span>
 				</div>
 				<div class="col-sm">
-					<?= $curr->pubAuths ?>.
+					<?= $curr->Authors ?>.
 					<span class="fw-italic">
 					"<?= $curr->Title ?>".
 					</span>
