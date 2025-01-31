@@ -141,7 +141,7 @@ function publications_display( $year, $type, $pubAuth, $page, $search ) {
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					<p>No results found. Try a different search.</p>
+					<p class="py-4">No results found. Try a different search.</p>
 				</div>
 			</div>
 		</div>
