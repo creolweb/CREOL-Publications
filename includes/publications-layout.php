@@ -3,6 +3,9 @@
  * Handles the form and the output.
  **/
 
+ //  TODO:
+ //  Make search button work.
+
  // Handles the dropdown on the left.
  function publications_form_display( $atts = [], $content = null, $tag = '' ) {
 
